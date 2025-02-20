@@ -14,7 +14,7 @@ class APIManager {
     static let shared = APIManager()
     
     // Should add if needed , cityid: String?, lat: String?, longitude: String?, loc_type: String?,
-    func fetchVideos(page: Int, searchQuery: [String]?, completion: @escaping (Result<[Video], Error>) -> Void) {
+    func fetchVideos(page: Int, searchQueries: [String]?, completion: @escaping (Result<[Video], Error>) -> Void) {
         
         var urlString = "\(Constants.BASEURL)"
         
@@ -28,8 +28,8 @@ class APIManager {
         parameters["type"] = "CITY"
         
         // If categories are provided, append them to the parameters
-        if let categories = searchQuery, !categories.isEmpty {
-            // Using the URL encoding for categories (categories[] = value)
+        if let categories = searchQueries, !categories.isEmpty {
+            
             for (index, category) in categories.enumerated() {
                 parameters["categories[\(index)]"] = category
             }
