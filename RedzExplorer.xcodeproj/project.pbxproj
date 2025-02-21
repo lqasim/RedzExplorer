@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B9529F02D6894FF0065CDFE /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */; };
+		4B9529F32D68CDF40065CDFE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F22D68CDF40065CDFE /* SDWebImage */; };
+		4B9529F52D68CDF40065CDFE /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */; };
+		4B9529F82D68D1850065CDFE /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F72D68D1850065CDFE /* SkeletonView */; };
 		4BB9C2842D6664F800BCA13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2832D6664F800BCA13D /* AppDelegate.swift */; };
 		4BB9C2862D6664F800BCA13D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2852D6664F800BCA13D /* SceneDelegate.swift */; };
 		4BB9C2882D6664F800BCA13D /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2872D6664F800BCA13D /* VideoListViewController.swift */; };
@@ -15,7 +19,6 @@
 		4BB9C2902D6664F900BCA13D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9C28E2D6664F900BCA13D /* LaunchScreen.storyboard */; };
 		4BB9C29F2D666DBE00BCA13D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C29E2D666DBE00BCA13D /* Video.swift */; };
 		4BB9C2A22D666F9B00BCA13D /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4BB9C2A12D666F9B00BCA13D /* AlamofireImage */; };
-		4BB9C2A52D670B4E00BCA13D /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 4BB9C2A42D670B4E00BCA13D /* SwiftyJSON */; };
 		4BB9C2A72D670D7E00BCA13D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2A62D670D7E00BCA13D /* User.swift */; };
 		4BB9C2A92D670F6700BCA13D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2A82D670F6700BCA13D /* APIManager.swift */; };
 		4BB9C2AB2D67169000BCA13D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2AA2D67169000BCA13D /* Constants.swift */; };
@@ -25,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BB9C2802D6664F800BCA13D /* RedzExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedzExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB9C2832D6664F800BCA13D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BB9C2852D6664F800BCA13D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BB9C2A52D670B4E00BCA13D /* SwiftyJSON in Frameworks */,
+				4B9529F82D68D1850065CDFE /* SkeletonView in Frameworks */,
+				4B9529F32D68CDF40065CDFE /* SDWebImage in Frameworks */,
+				4B9529F52D68CDF40065CDFE /* SDWebImageMapKit in Frameworks */,
 				4BB9C2A22D666F9B00BCA13D /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +110,7 @@
 			children = (
 				4BB9C29D2D666D1100BCA13D /* ViewControllers */,
 				4BB9C2B02D67449600BCA13D /* VideoCellTableViewCell.swift */,
+				4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,7 +173,9 @@
 			name = RedzExplorer;
 			packageProductDependencies = (
 				4BB9C2A12D666F9B00BCA13D /* AlamofireImage */,
-				4BB9C2A42D670B4E00BCA13D /* SwiftyJSON */,
+				4B9529F22D68CDF40065CDFE /* SDWebImage */,
+				4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */,
+				4B9529F72D68D1850065CDFE /* SkeletonView */,
 			);
 			productName = RedzExplorer;
 			productReference = 4BB9C2802D6664F800BCA13D /* RedzExplorer.app */;
@@ -198,7 +207,8 @@
 			mainGroup = 4BB9C2772D6664F800BCA13D;
 			packageReferences = (
 				4BB9C2A02D666F9B00BCA13D /* XCRemoteSwiftPackageReference "AlamofireImage" */,
-				4BB9C2A32D670B4E00BCA13D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				4B9529F62D68D1850065CDFE /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 4BB9C2812D6664F800BCA13D /* Products */;
 			projectDirPath = "";
@@ -235,6 +245,7 @@
 				4BB9C2AF2D673CAE00BCA13D /* VideoListViewModel.swift in Sources */,
 				4BB9C2AB2D67169000BCA13D /* Constants.swift in Sources */,
 				4BB9C2A72D670D7E00BCA13D /* User.swift in Sources */,
+				4B9529F02D6894FF0065CDFE /* CategoryCollectionViewCell.swift in Sources */,
 				4BB9C2862D6664F800BCA13D /* SceneDelegate.swift in Sources */,
 				4BB9C2B12D67449600BCA13D /* VideoCellTableViewCell.swift in Sources */,
 			);
@@ -462,6 +473,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		4B9529F62D68D1850065CDFE /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		4BB9C2A02D666F9B00BCA13D /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
@@ -470,26 +497,28 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		4BB9C2A32D670B4E00BCA13D /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B9529F22D68CDF40065CDFE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		4B9529F72D68D1850065CDFE /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B9529F62D68D1850065CDFE /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
 		4BB9C2A12D666F9B00BCA13D /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4BB9C2A02D666F9B00BCA13D /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
-		};
-		4BB9C2A42D670B4E00BCA13D /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4BB9C2A32D670B4E00BCA13D /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

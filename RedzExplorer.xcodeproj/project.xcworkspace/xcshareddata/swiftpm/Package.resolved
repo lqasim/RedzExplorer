@@ -19,12 +19,21 @@
       }
     },
     {
-      "identity" : "swiftyjson",
+      "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftyJSON/SwiftyJSON",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
-        "revision" : "af76cf3ef710b6ca5f8c05f3a31307d44a3c5828",
-        "version" : "5.0.2"
+        "revision" : "e7d3256c497af9330a0df866ee38f544ddd87c49",
+        "version" : "5.20.1"
+      }
+    },
+    {
+      "identity" : "skeletonview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Juanpe/SkeletonView",
+      "state" : {
+        "revision" : "2f5274827d310e32c09325dd3e0007120940988e",
+        "version" : "1.31.0"
       }
     }
   ],

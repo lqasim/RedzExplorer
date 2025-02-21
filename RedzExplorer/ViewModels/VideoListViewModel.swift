@@ -17,11 +17,22 @@ class VideoListViewModel {
     
     
     func loadVideos(searchQueries: [String]?, completion: @escaping (Bool) -> Void) {
-        
-        // check if it is already loading
-        guard !isLoading else { return }
+        print("Current Page: \(currentPage)")
+        // check if it is already loading then don't allow to load again
+        // fixed problem with paginiation using scrolling
+        guard !isLoading else {
+            return
+            
+        }
         
         isLoading = true
+        
+        // if the search query differes then revist page 1
+        if self.searchQueries != searchQueries {
+            self.searchQueries = searchQueries
+            self.videos = []
+            self.currentPage = 1
+        }
         
         APIManager.shared.fetchVideos(page: self.currentPage, searchQueries: searchQueries) { [weak self] results in
             
@@ -36,6 +47,7 @@ class VideoListViewModel {
                 } else {
                     self?.videos = newvideos
                     self?.searchQueries = searchQueries
+                    self?.currentPage = 1
                 }
                 
                 completion(true)
