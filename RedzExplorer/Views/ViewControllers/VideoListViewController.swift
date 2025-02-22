@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class VideoListViewController: UIViewController {
     
@@ -59,11 +60,9 @@ class VideoListViewController: UIViewController {
         // Scroll back to top and set flag while filtering
         videoList.isScrollEnabled = false
         if self.selectedCategories.contains("All"){
-            print("HERE")
             loadVideos(searchQueries: nil)
         } else{
             let categories = Array(selectedCategories)
-            print(categories)
             loadVideos(searchQueries: categories)
         }
     }

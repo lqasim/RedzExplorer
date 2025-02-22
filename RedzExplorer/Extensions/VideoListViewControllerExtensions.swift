@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftUI
 
 // Video list data Source
 extension VideoListViewController: UITableViewDataSource {
@@ -29,6 +29,15 @@ extension VideoListViewController: UITableViewDataSource {
 
 //Video list delegates
 extension VideoListViewController: UITableViewDelegate {
+    // handle cell tapped and navigation to a seperate swiftUI UI (video details page)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedVideo = self.videoModel.videos[indexPath.row]
+        let videoDetailsView = VideoDetailSwiftUIView(video: selectedVideo)
+        let hostingController = UIHostingController(rootView: videoDetailsView)
+        self.navigationController?.pushViewController(hostingController, animated: true)
+        
+    }
+    
     // In order to implement pagination, utilize screen width and when user reaches the end
     // get next page info
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

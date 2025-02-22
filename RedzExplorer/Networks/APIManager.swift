@@ -36,7 +36,6 @@ class APIManager {
         } else {
             // If no categories are provided, append a default API endpoint
             urlString += "?\(Constants.REDZ_POST_LIST_API)"
-            print("Using default URL: \(urlString)")
         }
         
         AF.request(urlString, parameters: parameters)
@@ -44,7 +43,6 @@ class APIManager {
             .responseDecodable(of: VideoResponse.self) { response in
                 switch response.result {
                 case .success(let videos):
-//                    print(videos.data.posts.count)
                     completion(.success(videos.data.posts))
                 case .failure(let error):
                     print(error.localizedDescription)

@@ -17,7 +17,6 @@ class VideoListViewModel {
     
     
     func loadVideos(searchQueries: [String]?, completion: @escaping (Bool) -> Void) {
-        print("Current Page: \(currentPage)")
         // check if it is already loading then don't allow to load again
         // fixed problem with paginiation using scrolling
         guard !isLoading else {

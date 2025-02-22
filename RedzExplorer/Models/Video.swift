@@ -11,9 +11,9 @@ struct Video: Codable {
     let id: Int
     let description: String?
     let category: String?
-    let postImageURL: String?
+    let image: PostImage?
     let postThumbnailImageURL: String?
-    let videoURL: String?
+//    let videoURL: String?
     let totalLikesCount: Int?
     let totalViewsCount: Int?
     let totalCommentsCount: Int?
@@ -31,10 +31,14 @@ struct Video: Codable {
         case user
         case postCategory = "post_category"
         case publishedAt = "published_at"
-        case postImageURL = "image.url"
+        case image
         case postThumbnailImageURL = "thumbnail_image"
-        case videoURL = "video.url"
+//        case videoURL = "video.url"
     }
+}
+
+struct PostImage: Codable {
+    let url: String
 }
 
 struct Post: Codable {
@@ -44,6 +48,7 @@ struct Post: Codable {
         case posts
     }
 }
+
 
 struct VideoResponse: Codable {
     let data: Post
