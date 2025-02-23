@@ -11,6 +11,10 @@ import SwiftUI
 // Video list data Source
 extension VideoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if videoModel.videos.count <= 0{
+            return 0
+        }
+        tableView.backgroundView = nil
         return self.videoModel.videos.count
     }
     

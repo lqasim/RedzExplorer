@@ -49,7 +49,20 @@ class VideoListViewController: UIViewController {
             if success {
                 DispatchQueue.main.async {
                     self?.videoList.isScrollEnabled = true
-                    self?.videoList.reloadData()
+                    // if no related videos are available show this message
+                    if self?.videoModel.videos.count == 0 {
+
+                        guard let strongSelf = self else{
+                            return
+                        }
+                        let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: strongSelf.view.bounds.size.width, height: strongSelf.view.bounds.size.height))
+                                emptyLabel.text = "No Related Videos available"
+                                emptyLabel.textAlignment = NSTextAlignment.center
+                                strongSelf.videoList.backgroundView = emptyLabel
+                                strongSelf.videoList.separatorStyle = UITableViewCell.SeparatorStyle.none
+                    }
+                        self?.videoList.reloadData()
+                    
                 }
             }
             
