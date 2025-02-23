@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B150DB92D6B157B00627188 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B150DB82D6B157B00627188 /* DateFormater.swift */; };
 		4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */; };
 		4B73EA212D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73EA202D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift */; };
 		4B9529F02D6894FF0065CDFE /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B150DB82D6B157B00627188 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4B73EA202D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailSwiftUIView.swift; sourceTree = "<group>"; };
 		4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				4BB9C2AA2D67169000BCA13D /* Constants.swift */,
 				4BB9C2AC2D67173F00BCA13D /* ConstantsTemplate.swift */,
+				4B150DB82D6B157B00627188 /* DateFormater.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				4BB9C2A92D670F6700BCA13D /* APIManager.swift in Sources */,
 				4BB9C2882D6664F800BCA13D /* VideoListViewController.swift in Sources */,
 				4BB9C29F2D666DBE00BCA13D /* Video.swift in Sources */,
+				4B150DB92D6B157B00627188 /* DateFormater.swift in Sources */,
 				4BB9C2AD2D67174000BCA13D /* ConstantsTemplate.swift in Sources */,
 				4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */,
 				4BB9C2842D6664F800BCA13D /* AppDelegate.swift in Sources */,
