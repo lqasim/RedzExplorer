@@ -57,7 +57,7 @@ class VideoCellTableViewCell: UITableViewCell {
         
         self.usenNameLbl.text = model.user.userName
         self.videoCategoryLbl.text = model.postCategory?.joined()
-        self.phoneNoLal.text = "Contact: \(model.user.phoneNumber ?? "No # is provided")"
+        self.phoneNoLal.text = "Contact: \(model.user.phoneNumber ?? "No number provided")"
         
         // description might be in arabic or english : didn't effect text handling might be removed
         let descriptionText = model.description ?? "No Description"
