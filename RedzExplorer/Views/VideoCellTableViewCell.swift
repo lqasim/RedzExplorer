@@ -41,6 +41,7 @@ class VideoCellTableViewCell: UITableViewCell {
     func configure(with model: Video) {
         videoThumbnailImg.showAnimatedGradientSkeleton()
         
+    
         // configure image
         if let thumbnailUrlString = model.postThumbnailImageURL,
            let url = URL(string: thumbnailUrlString) {

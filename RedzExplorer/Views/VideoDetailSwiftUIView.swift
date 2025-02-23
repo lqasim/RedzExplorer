@@ -9,14 +9,14 @@ import SwiftUI
 
 struct VideoDetailSwiftUIView: View {
     var video: Video
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // User Information Section
                 HStack(spacing: 15) {
                     // User Image
-                    AsyncImage(url: URL(string: video.user.profileThumbnailURL ?? "")) { image in
+                    AsyncImage(url: URL(string: video.user.profileThumbnailURL ?? "https://as2.ftcdn.net/v2/jpg/10/74/24/47/1000_F_1074244751_oiRCQr1irAIftqs4Gb7fbjwPthw4cbN3.jpg")) { image in
                         image.resizable()
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.white, lineWidth: 4))
