@@ -7,17 +7,16 @@
 
 import Foundation
 
-struct Video: Codable {
+struct VideoDTO: Codable {
     let id: Int
     let description: String?
     let category: String?
-    let image: PostImage?
+    let image: PostImageDTO?
     let postThumbnailImageURL: String?
-//    let videoURL: String?
     let totalLikesCount: Int?
     let totalViewsCount: Int?
     let totalCommentsCount: Int?
-    let user: User
+    let user: UserDto
     let postCategory: [String]?
     let publishedAt: String?
     
@@ -33,16 +32,15 @@ struct Video: Codable {
         case publishedAt = "published_at"
         case image
         case postThumbnailImageURL = "thumbnail_image"
-//        case videoURL = "video.url"
     }
 }
 
-struct PostImage: Codable {
+struct PostImageDTO: Codable {
     let url: String
 }
 
-struct Post: Codable {
-    let posts: [Video]
+struct PostDTO: Codable {
+    let posts: [VideoDTO]
     
     enum CodingKeys: String, CodingKey {
         case posts
@@ -50,8 +48,8 @@ struct Post: Codable {
 }
 
 
-struct VideoResponse: Codable {
-    let data: Post
+struct VideoResponseDTO: Codable {
+    let data: PostDTO
     
     enum CodingKeys: String, CodingKey {
         case data

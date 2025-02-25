@@ -140,7 +140,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="syz-WT-3mX" secondAttribute="trailing" constant="10" id="7tw-fv-m7Z"/>
                             <constraint firstItem="syz-WT-3mX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="80a-IX-Swm"/>
-                            <constraint firstItem="syz-WT-3mX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BWk-b0-TRc"/>
+                            <constraint firstItem="syz-WT-3mX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GTB-tD-xgl"/>
                             <constraint firstAttribute="bottom" secondItem="syz-WT-3mX" secondAttribute="bottom" constant="10" id="meu-7d-vK1"/>
                         </constraints>
                     </view>

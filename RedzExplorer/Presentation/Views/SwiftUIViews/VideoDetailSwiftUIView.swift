@@ -16,7 +16,7 @@ struct VideoDetailSwiftUIView: View {
                 // User Information Section
                 HStack(spacing: 15) {
                     // User Image
-                    AsyncImage(url: URL(string: video.user.profileThumbnailURL ?? "https://as2.ftcdn.net/v2/jpg/10/74/24/47/1000_F_1074244751_oiRCQr1irAIftqs4Gb7fbjwPthw4cbN3.jpg")) { image in
+                    AsyncImage(url: URL(string: video.user.profileThumbnailURL)) { image in
                         image.resizable()
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.white, lineWidth: 4))
@@ -35,9 +35,9 @@ struct VideoDetailSwiftUIView: View {
                         
                         // Follower/Following/Likes counts
                         HStack(spacing: 20) {
-                            Text("Followers\n \(video.user.followedsCount ?? 0)").fontWeight(.semibold)
-                            Text("Following\n \(video.user.followingsCount ?? 0)").fontWeight(.semibold)
-                            Text("Likes\n \(video.user.totalLikes ?? 0)").fontWeight(.semibold)
+                            Text("Followers\n \(video.user.followedsCount)").fontWeight(.semibold)
+                            Text("Following\n \(video.user.followingsCount)").fontWeight(.semibold)
+                            Text("Likes\n \(video.user.totalLikes)").fontWeight(.semibold)
                         }
                         .font(.subheadline)
                     }
@@ -46,7 +46,7 @@ struct VideoDetailSwiftUIView: View {
                 Divider()
                 Text("Current Video").fontWeight(.bold).font(.title)
                 // Video Cover Image
-                AsyncImage(url: URL(string: video.image?.url ?? "")) { image in
+                AsyncImage(url: URL(string: video.image.url)) { image in
                     image.resizable()
                         .scaledToFill()
                         .frame(width: UIScreen.main.bounds.width - 10)
@@ -65,21 +65,21 @@ struct VideoDetailSwiftUIView: View {
                     HStack(spacing: 30) {
                         HStack {
                             Text("❤️")
-                            Text("\(video.totalLikesCount ?? 0) Likes")
+                            Text("\(video.totalLikesCount) Likes")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                         }
                         
                         // Comments Section
                         HStack {
-                            Text("💬 \(video.totalCommentsCount ?? 0) Comments")
+                            Text("💬 \(video.totalCommentsCount) Comments")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                         }
                         
                         // views Section
                         HStack {
-                            Text("Views \(video.totalViewsCount ?? 0)")
+                            Text("Views \(video.totalViewsCount)")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                         }
@@ -87,11 +87,11 @@ struct VideoDetailSwiftUIView: View {
                     .padding(.vertical, 10)
                 }
                 
-                Text("Publish Date: \(DateFormatterUtil.formatDate(inputDateString: video.publishedAt ?? "Unkown") ?? "")").font(.subheadline)
+                Text("Publish Date: \(DateFormatterUtil.formatDate(inputDateString: video.publishedAt ) ?? "")").font(.subheadline)
                 
-                Text("\(video.postCategory?.count ?? 0 > 1 ? "Categories: " : "Category: ")\(video.postCategory?.joined(separator: ", ") ?? "No categories")").font(.subheadline).fontWeight(.semibold)
+                Text("\(video.postCategory.count > 1 ? "Categories: " : "Category: ")\(video.postCategory.joined(separator: ", ") )").font(.subheadline).fontWeight(.semibold)
 
-                Text("Description\n \(video.description ?? "No description available")")
+                Text("Description\n \(video.description)")
                     .font(.body)
                     .fontWeight(.semibold)
                     .lineLimit(nil)  // Allow multi-lines

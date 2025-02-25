@@ -15,7 +15,7 @@ extension VideoListViewController: UITableViewDataSource {
             return 0
         }
         tableView.backgroundView = nil
-        return self.videoModel.videos.count
+        return videoModel.videos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,7 +23,7 @@ extension VideoListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configure(with: self.videoModel.videos[indexPath.row])
+        cell.configure(with: videoModel.videos[indexPath.row])
         
         return cell
     }

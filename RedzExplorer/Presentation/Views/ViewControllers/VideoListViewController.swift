@@ -17,7 +17,9 @@ class VideoListViewController: UIViewController {
     
     var selectedCategories: Set<String> = ["All"]
     
-    var videoModel = VideoListViewModel()
+    var videoModel = VideoListViewModel(getVideoListUseCase:FetchVideosUseCase() , videoMapper: VideoMapper())
+    
+    //    var videoData: [Video] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,9 @@ class VideoListViewController: UIViewController {
         // setting up the video list
         videoList.dataSource = self
         videoList.delegate = self
+        
+        // prepare videoModel
+        prepareVideoModel()
         // initially load all videos
         loadVideos(searchQueries: nil)
     }
@@ -40,32 +45,31 @@ class VideoListViewController: UIViewController {
     private func loadVideos(searchQueries: [String]?) {
         
         activityIndicator.startAnimating()
-        videoModel.loadVideos(searchQueries: searchQueries) { [weak self] success in
-            
-            // Stop loading indicator and reload table view
-            self?.activityIndicator.stopAnimating()
-            
-            
-            if success {
-                DispatchQueue.main.async {
-                    self?.videoList.isScrollEnabled = true
-                    // if no related videos are available show this message
-                    if self?.videoModel.videos.count == 0 {
-
-                        guard let strongSelf = self else{
-                            return
-                        }
-                        let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: strongSelf.view.bounds.size.width, height: strongSelf.view.bounds.size.height))
-                                emptyLabel.text = "No Related Videos available"
-                                emptyLabel.textAlignment = NSTextAlignment.center
-                                strongSelf.videoList.backgroundView = emptyLabel
-                                strongSelf.videoList.separatorStyle = UITableViewCell.SeparatorStyle.none
-                    }
-                        self?.videoList.reloadData()
-                    
-                }
+        videoModel.retriveVideos(searchQueries: searchQueries)
+        self.activityIndicator.stopAnimating()
+    }
+    
+    private func showError(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func prepareVideoModel() {
+        videoModel.didFetchVideos = { [weak self] in
+            self?.videoList.isScrollEnabled = true
+            if self?.videoModel.videos.count == 0 {
+                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self?.view.bounds.size.width ?? 150, height: self?.view.bounds.size.height ?? 150))
+                emptyLabel.text = "No Related Videos available"
+                emptyLabel.textAlignment = NSTextAlignment.center
+                self?.videoList.backgroundView = emptyLabel
+                self?.videoList.separatorStyle = UITableViewCell.SeparatorStyle.none
             }
-            
+            self?.videoList.reloadData()
+        }
+        
+        videoModel.didFailWithError = { [weak self]err in
+            self?.showError(message: err)
         }
     }
     

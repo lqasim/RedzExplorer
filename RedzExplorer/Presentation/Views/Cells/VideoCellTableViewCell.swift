@@ -40,27 +40,28 @@ class VideoCellTableViewCell: UITableViewCell {
     
     func configure(with model: Video) {
         videoThumbnailImg.showAnimatedGradientSkeleton()
-        
-    
         // configure image
-        if let thumbnailUrlString = model.postThumbnailImageURL,
-           let url = URL(string: thumbnailUrlString) {
+        let thumbnailUrlString = model.postThumbnailImageURL
+        
+        if let url = URL(string: thumbnailUrlString) {
             videoThumbnailImg.sd_setImage(with: url) { image, error, cacheType, url in
                 
                 self.videoThumbnailImg.hideSkeleton()
                 if let error = error {
                     print("Error loading image: \(error.localizedDescription)")
                 }
+                
             }
+            
         }
         
         
         self.usenNameLbl.text = model.user.userName
-        self.videoCategoryLbl.text = model.postCategory?.joined()
-        self.phoneNoLal.text = "Contact: \(model.user.phoneNumber ?? "No number provided")"
+        self.videoCategoryLbl.text = model.postCategory.joined()
+        self.phoneNoLal.text = "Contact: \(model.user.phoneNumber)"
         
         // description might be in arabic or english : didn't effect text handling might be removed
-        let descriptionText = model.description ?? "No Description"
+        let descriptionText = model.description
         self.videoDescriptionLbl.text = descriptionText
         self.videoDescriptionLbl.textAlignment = isTextRTL(descriptionText) ? .right : .left
         self.videoDescriptionLbl.semanticContentAttribute = isTextRTL(descriptionText) ? .forceRightToLeft : .forceLeftToRight

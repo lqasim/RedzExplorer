@@ -2,22 +2,24 @@
 //  APIManager.swift
 //  RedzExplorer
 //
-//  Created by homyt on 20/02/2025.
+//  Created by homyt on 25/02/2025.
 //
 
 import Foundation
 import Alamofire
 
-class APIManager {
+protocol APIManagerProtocol {
+    func fetchVideos(page: Int, searchQueries: [String]?, completion: @escaping (Result<[VideoDTO], Error>) -> Void)
+}
+
+// implementation is directly put here because of the simple one use case
+class APIManager: APIManagerProtocol {
     
-    //create a shared instance to make apis calls
     static let shared = APIManager()
     
-    // Should add if needed , cityid: String?, lat: String?, longitude: String?, loc_type: String?,
-    func fetchVideos(page: Int, searchQueries: [String]?, completion: @escaping (Result<[Video], Error>) -> Void) {
+    func fetchVideos(page: Int, searchQueries: [String]?, completion: @escaping (Result<[VideoDTO], Error>) -> Void) {
         
-        var urlString = "\(Constants.BASEURL)"
-        
+        var urlString = Constants.BASEURL
         var parameters: [String: Any] = ["page":page]
         parameters["per_page"] = 10
         
@@ -27,9 +29,7 @@ class APIManager {
         parameters["longitude"] = "7.282820"
         parameters["type"] = "CITY"
         
-        // If categories are provided, append them to the parameters
         if let categories = searchQueries, !categories.isEmpty {
-            
             for (index, category) in categories.enumerated() {
                 parameters["categories[\(index)]"] = category
             }
@@ -40,7 +40,7 @@ class APIManager {
         
         AF.request(urlString, parameters: parameters)
             .validate()
-            .responseDecodable(of: VideoResponse.self) { response in
+            .responseDecodable (of: VideoResponseDTO.self){ response in
                 switch response.result {
                 case .success(let videos):
                     completion(.success(videos.data.posts))
@@ -50,4 +50,5 @@ class APIManager {
                 
             }
     }
+    
 }
