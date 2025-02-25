@@ -50,7 +50,8 @@ extension VideoListViewController: UITableViewDelegate {
             let contentHeight = scrollView.contentSize.height
             let scrollPosition = scrollView.contentOffset.y + scrollView.frame.size.height
             
-            if contentHeight - scrollPosition < 100 {
+            if contentHeight - scrollPosition < 100 && !isPagination {
+                isPagination = true
                 // needs to load next page
                 filterVideosByCategory()
             }

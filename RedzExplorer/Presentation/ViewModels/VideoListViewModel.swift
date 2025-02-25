@@ -22,12 +22,36 @@ class VideoListViewModel {
     private let getVideoList: FetchVideosUseCaseProtocol
     private let videoMapper: VideoMapper
     
+    // Queue to handle requests sequentally
+    private var requestQueue: [(() -> Void)] = []
+    
     init(getVideoListUseCase: FetchVideosUseCaseProtocol, videoMapper: VideoMapper) {
         self.getVideoList = getVideoListUseCase
         self.videoMapper = videoMapper
     }
     
     public func retriveVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
+        requestQueue.append {
+            self.loadVideos(searchQueries: searchQueries, completion: completion)
+        }
+        
+        // Start processing if no other requests are being handled
+        if !isLoading {
+            processNextRequest()
+        }
+        
+    }
+    
+    
+    private func processNextRequest() {
+        if !requestQueue.isEmpty {
+            let nextRequest = requestQueue.removeFirst()
+            nextRequest()
+        }
+    }
+    
+    
+    private func loadVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
         guard !isLoading else{
             return
         }
@@ -59,7 +83,8 @@ class VideoListViewModel {
             case .failure(let error):
                 self?.didFailWithError?("Failed to fetch videos: \(error.localizedDescription)")
             }
-            
+            // After request is finished process next request
+            self?.processNextRequest()
         }
     }
 }

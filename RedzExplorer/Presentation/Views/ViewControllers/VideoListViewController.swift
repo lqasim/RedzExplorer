@@ -19,7 +19,8 @@ class VideoListViewController: UIViewController {
     
     var videoModel = VideoListViewModel(getVideoListUseCase:FetchVideosUseCase() , videoMapper: VideoMapper())
     
-    //    var videoData: [Video] = []
+    // limit pagination to one page at a time
+    var isPagination = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,7 @@ class VideoListViewController: UIViewController {
         activityIndicator.startAnimating()
         videoModel.retriveVideos(searchQueries: searchQueries) {
             self.activityIndicator.stopAnimating()
+            self.isPagination = false
         }
     }
     
