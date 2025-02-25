@@ -27,7 +27,7 @@ class VideoListViewModel {
         self.videoMapper = videoMapper
     }
     
-    public func retriveVideos(searchQueries: [String]?) -> Void{
+    public func retriveVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
         guard !isLoading else{
             return
         }
@@ -54,8 +54,8 @@ class VideoListViewModel {
                     self?.videos = newVids
                     self?.appendable = true
                 }
-                print(self?.videos.count ?? 0)
                 self?.didFetchVideos?()
+                completion()
             case .failure(let error):
                 self?.didFailWithError?("Failed to fetch videos: \(error.localizedDescription)")
             }

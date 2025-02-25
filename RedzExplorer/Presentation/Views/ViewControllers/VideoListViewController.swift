@@ -45,8 +45,9 @@ class VideoListViewController: UIViewController {
     private func loadVideos(searchQueries: [String]?) {
         
         activityIndicator.startAnimating()
-        videoModel.retriveVideos(searchQueries: searchQueries)
-        self.activityIndicator.stopAnimating()
+        videoModel.retriveVideos(searchQueries: searchQueries) {
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     private func showError(message: String) {
