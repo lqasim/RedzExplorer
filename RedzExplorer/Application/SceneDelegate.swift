@@ -27,12 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Could not instantiate VideoListViewController from storyboard")
         }
         
-        let videoMapper = VideoMapper()
-        let apiManager = APIManager()
-        let videoRepository = VideoRepository(apiManager: apiManager)
-        let domainUseCase = FetchVideosUseCase(videoRepository: videoRepository)
         // Initialize the VideoListViewModel
-        videoListVC.videoModel = VideoListViewModel(useCase: domainUseCase, videoMapper: videoMapper)
+        videoListVC.videoModel = VideoListFactory.create()
         
         // Set up the navigation controller
         let navController = UINavigationController(rootViewController: videoListVC)

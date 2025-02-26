@@ -25,7 +25,6 @@
 		4BB9C2A72D670D7E00BCA13D /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2A62D670D7E00BCA13D /* UserDto.swift */; };
 		4BB9C2B12D67449600BCA13D /* VideoCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2B02D67449600BCA13D /* VideoCellTableViewCell.swift */; };
 		4BBC1FD82D6DB5A90086CA45 /* VideoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FD72D6DB5A90086CA45 /* VideoRepository.swift */; };
-		4BBC1FDB2D6DB5DD0086CA45 /* APIManager(removed).swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FDA2D6DB5DD0086CA45 /* APIManager(removed).swift */; };
 		4BBC1FDD2D6DB6050086CA45 /* FetchVideosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FDC2D6DB6050086CA45 /* FetchVideosUseCase.swift */; };
 		4BBC1FDF2D6DB6480086CA45 /* VideoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FDE2D6DB6480086CA45 /* VideoListViewModel.swift */; };
 		4BBC1FE32D6DB7810086CA45 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FE22D6DB7810086CA45 /* Video.swift */; };
@@ -42,6 +41,7 @@
 		4BF79F142D6E832000EBFC77 /* VideoListApiEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF79F132D6E832000EBFC77 /* VideoListApiEndPoint.swift */; };
 		4BF79F172D6E859F00EBFC77 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF79F162D6E859F00EBFC77 /* APIManager.swift */; };
 		4BF79F1A2D6E861700EBFC77 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF79F192D6E861700EBFC77 /* RepositoryProtocol.swift */; };
+		4BF79F1D2D6F160F00EBFC77 /* VideoListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF79F1C2D6F160F00EBFC77 /* VideoListFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +61,6 @@
 		4BB9C2A62D670D7E00BCA13D /* UserDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
 		4BB9C2B02D67449600BCA13D /* VideoCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCellTableViewCell.swift; sourceTree = "<group>"; };
 		4BBC1FD72D6DB5A90086CA45 /* VideoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRepository.swift; sourceTree = "<group>"; };
-		4BBC1FDA2D6DB5DD0086CA45 /* APIManager(removed).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager(removed).swift"; sourceTree = "<group>"; };
 		4BBC1FDC2D6DB6050086CA45 /* FetchVideosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVideosUseCase.swift; sourceTree = "<group>"; };
 		4BBC1FDE2D6DB6480086CA45 /* VideoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModel.swift; sourceTree = "<group>"; };
 		4BBC1FE22D6DB7810086CA45 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		4BF79F132D6E832000EBFC77 /* VideoListApiEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListApiEndPoint.swift; sourceTree = "<group>"; };
 		4BF79F162D6E859F00EBFC77 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		4BF79F192D6E861700EBFC77 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		4BF79F1C2D6F160F00EBFC77 /* VideoListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,6 @@
 				4BF79F152D6E832B00EBFC77 /* APIEndPoint */,
 				4BBC1FE82D6DB99D0086CA45 /* Mappers */,
 				4BBC1FCB2D6DB4860086CA45 /* Repositories */,
-				4BBC1FCA2D6DB47B0086CA45 /* DataSources */,
 				4BBC1FC92D6DB4740086CA45 /* Models */,
 			);
 			path = Data;
@@ -154,14 +153,6 @@
 				4BB9C2A62D670D7E00BCA13D /* UserDto.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		4BBC1FCA2D6DB47B0086CA45 /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				4BBC1FDA2D6DB5DD0086CA45 /* APIManager(removed).swift */,
-			);
-			path = DataSources;
 			sourceTree = "<group>";
 		};
 		4BBC1FCB2D6DB4860086CA45 /* Repositories */ = {
@@ -263,6 +254,7 @@
 		4BBC1FED2D6E10100086CA45 /* VideoList */ = {
 			isa = PBXGroup;
 			children = (
+				4BF79F1B2D6F15F400EBFC77 /* Composition */,
 				4BBC1FC82D6DB4610086CA45 /* Data */,
 				4BBC1FCC2D6DB4950086CA45 /* Domain */,
 				4BBC1FEE2D6E10520086CA45 /* UI */,
@@ -332,6 +324,14 @@
 				4BF79F192D6E861700EBFC77 /* RepositoryProtocol.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		4BF79F1B2D6F15F400EBFC77 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				4BF79F1C2D6F160F00EBFC77 /* VideoListFactory.swift */,
+			);
+			path = Composition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,11 +417,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BBC1FDB2D6DB5DD0086CA45 /* APIManager(removed).swift in Sources */,
 				4BBC1FDD2D6DB6050086CA45 /* FetchVideosUseCase.swift in Sources */,
 				4BBC1FE52D6DB7A80086CA45 /* PostImage.swift in Sources */,
 				4BB9C2882D6664F800BCA13D /* VideoListViewController.swift in Sources */,
 				4BB9C29F2D666DBE00BCA13D /* VideoDto.swift in Sources */,
+				4BF79F1D2D6F160F00EBFC77 /* VideoListFactory.swift in Sources */,
 				4B150DB92D6B157B00627188 /* DateFormater.swift in Sources */,
 				4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */,
 				4BF79F122D6E540A00EBFC77 /* APIEndpoint.swift in Sources */,
