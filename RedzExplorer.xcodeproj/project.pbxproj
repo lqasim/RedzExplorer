@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4B150DB92D6B157B00627188 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B150DB82D6B157B00627188 /* DateFormater.swift */; };
+		4B5F66C42D6F5020002DAAA5 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5F66C32D6F5020002DAAA5 /* XCoordinator */; };
+		4B5F66C72D6F5110002DAAA5 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */; };
+		4B5F66C92D6F5135002DAAA5 /* VideoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */; };
 		4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */; };
 		4B73EA212D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73EA202D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift */; };
 		4B9529F02D6894FF0065CDFE /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */; };
@@ -46,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		4B150DB82D6B157B00627188 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
+		4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCoordinator.swift; sourceTree = "<group>"; };
 		4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4B73EA202D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailSwiftUIView.swift; sourceTree = "<group>"; };
 		4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -89,12 +94,22 @@
 				4B9529F32D68CDF40065CDFE /* SDWebImage in Frameworks */,
 				4B9529F52D68CDF40065CDFE /* SDWebImageMapKit in Frameworks */,
 				4BB9C2A22D666F9B00BCA13D /* AlamofireImage in Frameworks */,
+				4B5F66C42D6F5020002DAAA5 /* XCoordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B5F66C52D6F50F2002DAAA5 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */,
+				4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		4BB9C2772D6664F800BCA13D = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +129,7 @@
 		4BB9C2822D6664F800BCA13D /* RedzExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				4B5F66C52D6F50F2002DAAA5 /* Coordinator */,
 				4BF79F102D6E53F300EBFC77 /* Networking */,
 				4BBC1FEC2D6E0F0A0086CA45 /* Assets */,
 				4BBC1FEB2D6E0E230086CA45 /* Application */,
@@ -355,6 +371,7 @@
 				4B9529F22D68CDF40065CDFE /* SDWebImage */,
 				4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */,
 				4B9529F72D68D1850065CDFE /* SkeletonView */,
+				4B5F66C32D6F5020002DAAA5 /* XCoordinator */,
 			);
 			productName = RedzExplorer;
 			productReference = 4BB9C2802D6664F800BCA13D /* RedzExplorer.app */;
@@ -388,6 +405,7 @@
 				4BB9C2A02D666F9B00BCA13D /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				4B9529F62D68D1850065CDFE /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				4B5F66C22D6F5020002DAAA5 /* XCRemoteSwiftPackageReference "XCoordinator" */,
 			);
 			productRefGroup = 4BB9C2812D6664F800BCA13D /* Products */;
 			projectDirPath = "";
@@ -431,6 +449,7 @@
 				4BF79F0E2D6E519D00EBFC77 /* StringUtils.swift in Sources */,
 				4BF79F142D6E832000EBFC77 /* VideoListApiEndPoint.swift in Sources */,
 				4BB9C2A72D670D7E00BCA13D /* UserDto.swift in Sources */,
+				4B5F66C72D6F5110002DAAA5 /* CoordinatorProtocol.swift in Sources */,
 				4B9529F02D6894FF0065CDFE /* CategoryCollectionViewCell.swift in Sources */,
 				4BF79F0C2D6E50A100EBFC77 /* DateUtils.swift in Sources */,
 				4BBC1FEA2D6DB9AC0086CA45 /* VideoMapper.swift in Sources */,
@@ -440,6 +459,7 @@
 				4BBC1FE32D6DB7810086CA45 /* Video.swift in Sources */,
 				4BBC1FD82D6DB5A90086CA45 /* VideoRepository.swift in Sources */,
 				4BF79F052D6E36E500EBFC77 /* ConfigurationManager.swift in Sources */,
+				4B5F66C92D6F5135002DAAA5 /* VideoListCoordinator.swift in Sources */,
 				4BB9C2B12D67449600BCA13D /* VideoCellTableViewCell.swift in Sources */,
 				4B73EA212D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift in Sources */,
 				4BBC1FE72D6DB7B10086CA45 /* User.swift in Sources */,
@@ -669,6 +689,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4B5F66C22D6F5020002DAAA5 /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/QuickBirdEng/XCoordinator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -696,6 +724,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B5F66C32D6F5020002DAAA5 /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B5F66C22D6F5020002DAAA5 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinator;
+		};
 		4B9529F22D68CDF40065CDFE /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */;

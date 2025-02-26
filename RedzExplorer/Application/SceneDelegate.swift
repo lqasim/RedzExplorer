@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    
+    var coordinator: VideoListCoordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -20,22 +20,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.prefersLargeTitles = true
+        // Initialize the ViewModel
+        let videoListViewModel = VideoListFactory.create()
         
-        // Initialize the VideoListViewController from the storyboard
-        guard let videoListVC = storyboard.instantiateViewController(identifier: "VideoListViewController") as? VideoListViewController else {
-            fatalError("Could not instantiate VideoListViewController from storyboard")
-        }
+        // Initialize the Coordinator
+        coordinator = VideoListCoordinator(navigationController: navigationController, videoListViewModel: videoListViewModel)
         
-        // Initialize the VideoListViewModel
-        videoListVC.videoModel = VideoListFactory.create()
+        // Start the Coordinator to show the initial view
+        coordinator?.start()
         
-        // Set up the navigation controller
-        let navController = UINavigationController(rootViewController: videoListVC)
-        navController.navigationBar.prefersLargeTitles = true
         // Set the root view controller
-        window?.rootViewController = navController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        // normal way
+        //        guard let windowScene = (scene as? UIWindowScene) else { return }
+        //
+        //        window = UIWindow(windowScene: windowScene)
+        //
+        //        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        //
+        //        // Initialize the VideoListViewController from the storyboard
+        //        guard let videoListVC = storyboard.instantiateViewController(identifier: "VideoListViewController") as? VideoListViewController else {
+        //            fatalError("Could not instantiate VideoListViewController from storyboard")
+        //        }
+        //
+        //        // Initialize the VideoListViewModel
+        //        videoListVC.videoModel = VideoListFactory.create()
+        //
+        //        // Set up the navigation controller
+        //        let navController = UINavigationController(rootViewController: videoListVC)
+        //        navController.navigationBar.prefersLargeTitles = true
+        //        // Set the root view controller
+        //        window?.rootViewController = navController
+        //        window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
