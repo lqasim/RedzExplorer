@@ -11,7 +11,7 @@ class DateFormatterUtil {
     
     // Method to conver date into "yyyy-MM-dd" format
     static func formatDate(inputDateString: String) -> String? {
-       
+        
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
         
@@ -20,7 +20,7 @@ class DateFormatterUtil {
             
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = "yyyy-MM-dd"
-    
+            
             return outputFormatter.string(from: date)
         }
         

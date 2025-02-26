@@ -15,9 +15,9 @@ class VideoListViewController: UIViewController {
     
     private var activityIndicator: UIActivityIndicatorView!
     
-    var selectedCategories: Set<String> = ["All"]
+    var selectedCategories: Set<Category> = [.all]
     
-    var videoModel = VideoListViewModel(getVideoListUseCase:FetchVideosUseCase() , videoMapper: VideoMapper())
+    var videoModel: VideoListViewModel?
     
     // limit pagination to one page at a time
     var isPagination = false
@@ -46,7 +46,7 @@ class VideoListViewController: UIViewController {
     private func loadVideos(searchQueries: [String]?) {
         
         activityIndicator.startAnimating()
-        videoModel.retriveVideos(searchQueries: searchQueries) {
+        videoModel?.retrieveVideos(searchQueries: searchQueries) {
             self.activityIndicator.stopAnimating()
             self.isPagination = false
         }
@@ -59,9 +59,9 @@ class VideoListViewController: UIViewController {
     }
     
     private func prepareVideoModel() {
-        videoModel.didFetchVideos = { [weak self] in
+        videoModel?.didFetchVideos = { [weak self] in
             self?.videoList.isScrollEnabled = true
-            if self?.videoModel.videos.count == 0 {
+            if self?.videoModel?.videos.count == 0 {
                 let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self?.view.bounds.size.width ?? 150, height: self?.view.bounds.size.height ?? 150))
                 emptyLabel.text = "No Related Videos available"
                 emptyLabel.textAlignment = NSTextAlignment.center
@@ -71,7 +71,7 @@ class VideoListViewController: UIViewController {
             self?.videoList.reloadData()
         }
         
-        videoModel.didFailWithError = { [weak self]err in
+        videoModel?.didFailWithError = { [weak self]err in
             self?.showError(message: err)
         }
     }
@@ -79,37 +79,41 @@ class VideoListViewController: UIViewController {
     func filterVideosByCategory() {
         // Scroll back to top and set flag while filtering
         videoList.isScrollEnabled = false
-        if self.selectedCategories.contains("All"){
+
+        if self.selectedCategories.contains(.all){
             loadVideos(searchQueries: nil)
         } else{
             let categories = Array(selectedCategories)
-            loadVideos(searchQueries: categories)
+            loadVideos(searchQueries: categories.map({
+                $0.displayName
+            }))
         }
     }
     
     @objc func categoryButtonTapped(_ sender: UIButton) {
-        let category = Constants.categories[sender.tag]
+        guard let category = Category.allCases[safe: sender.tag] else {
+            return
+        }
         
-        if category == "All" {
+        // If 'All' is selected, reset the selected categories
+        if category == .all {
             selectedCategories.removeAll()
-            // deselect all other categories
-            selectedCategories = ["All"]
+            selectedCategories.insert(.all)
         } else {
-            // remove all as its the default
-            selectedCategories.remove("All")
+            selectedCategories.remove(.all)
             
-            // Toggle selection to remove if already exists
             if selectedCategories.contains(category) {
                 selectedCategories.remove(category)
-            } else{
+            } else {
                 selectedCategories.insert(category)
             }
             
-            // check if categories are empty add  All as a dfault
             if selectedCategories.isEmpty {
-                selectedCategories.insert("All")
+                selectedCategories.insert(.all)
             }
         }
+        
+        // Scroll back to top and reload the collection view
         self.videoList.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         categoryCollectionView.reloadData()
         filterVideosByCategory()

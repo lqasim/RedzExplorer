@@ -19,18 +19,17 @@ class VideoListViewModel {
     private var searchQueries: [String]?
     private var appendable = true
     
-    private let getVideoList: FetchVideosUseCaseProtocol
+    private let useCase: FetchVideosUseCaseProtocol
     private let videoMapper: VideoMapper
     
-    // Queue to handle requests sequentally
     private var requestQueue: [(() -> Void)] = []
     
-    init(getVideoListUseCase: FetchVideosUseCaseProtocol, videoMapper: VideoMapper) {
-        self.getVideoList = getVideoListUseCase
+    init(useCase: FetchVideosUseCaseProtocol, videoMapper: VideoMapper) {
+        self.useCase = useCase
         self.videoMapper = videoMapper
     }
     
-    public func retriveVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
+    public func retrieveVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
         requestQueue.append {
             self.loadVideos(searchQueries: searchQueries, completion: completion)
         }
@@ -39,9 +38,7 @@ class VideoListViewModel {
         if !isLoading {
             processNextRequest()
         }
-        
     }
-    
     
     private func processNextRequest() {
         if !requestQueue.isEmpty {
@@ -50,11 +47,8 @@ class VideoListViewModel {
         }
     }
     
-    
     private func loadVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
-        guard !isLoading else{
-            return
-        }
+        guard !isLoading else { return }
         
         isLoading = true
         
@@ -64,18 +58,18 @@ class VideoListViewModel {
             self.appendable = false
         }
         
-        getVideoList.execute(page: self.currentPage, searchQueries: searchQueries) {[weak self] result in
+        useCase.execute(page: self.currentPage, searchQueries: searchQueries) { [weak self] (result: Result<[VideoDTO],Error>) in
             self?.isLoading = false
             switch result {
             case .success(let newVideos):
-                let newVids = newVideos.compactMap({
+                let mappedVideos = newVideos.compactMap {
                     self?.videoMapper.map(dto: $0)
-                })
+                }
                 if self?.appendable == true {
-                    self?.videos.append(contentsOf: newVids)
+                    self?.videos.append(contentsOf: mappedVideos)
                     self?.currentPage += 1
-                }else{
-                    self?.videos = newVids
+                } else {
+                    self?.videos = mappedVideos
                     self?.appendable = true
                 }
                 self?.didFetchVideos?()
@@ -83,7 +77,6 @@ class VideoListViewModel {
             case .failure(let error):
                 self?.didFailWithError?("Failed to fetch videos: \(error.localizedDescription)")
             }
-            // After request is finished process next request
             self?.processNextRequest()
         }
     }

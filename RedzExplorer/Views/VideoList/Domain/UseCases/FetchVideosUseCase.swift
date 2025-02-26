@@ -13,13 +13,13 @@ protocol FetchVideosUseCaseProtocol {
 
 class FetchVideosUseCase: FetchVideosUseCaseProtocol {
     
-    private let videoRepository: VideoRepositoryProtocol
+    private let videoRepository: RepositoryProtocol
     
-    init(videoRepository: VideoRepositoryProtocol = VideoRepository()) {
+    init(videoRepository: RepositoryProtocol) {
         self.videoRepository = videoRepository
     }
     
     func execute(page: Int, searchQueries: [String]?, completion: @escaping (Result<[VideoDTO], Error>) -> Void) {
-        videoRepository.fetchVideos(page: page, searchQueries: searchQueries, completion: completion)
+        videoRepository.call(page: page, searchQueries: searchQueries, completion: completion)
     }
 }

@@ -87,7 +87,7 @@ struct VideoDetailSwiftUIView: View {
                     .padding(.vertical, 10)
                 }
                 
-                Text("Publish Date: \(DateFormatterUtil.formatDate(inputDateString: video.publishedAt ) ?? "")").font(.subheadline)
+                Text("Publish Date: \(video.publishedAt.toDate()?.toString() ?? "")").font(.subheadline)
                 
                 Text("\(video.postCategory.count > 1 ? "Categories: " : "Category: ")\(video.postCategory.joined(separator: ", ") )").font(.subheadline).fontWeight(.semibold)
 
