@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B150DB92D6B157B00627188 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B150DB82D6B157B00627188 /* DateFormater.swift */; };
 		4B5F66C42D6F5020002DAAA5 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5F66C32D6F5020002DAAA5 /* XCoordinator */; };
 		4B5F66C72D6F5110002DAAA5 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */; };
 		4B5F66C92D6F5135002DAAA5 /* VideoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */; };
@@ -48,7 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B150DB82D6B157B00627188 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCoordinator.swift; sourceTree = "<group>"; };
 		4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				4BF79F0B2D6E50A100EBFC77 /* DateUtils.swift */,
-				4B150DB82D6B157B00627188 /* DateFormater.swift */,
 				4BF79F0D2D6E519D00EBFC77 /* StringUtils.swift */,
 			);
 			path = Utils;
@@ -440,7 +437,6 @@
 				4BB9C2882D6664F800BCA13D /* VideoListViewController.swift in Sources */,
 				4BB9C29F2D666DBE00BCA13D /* VideoDto.swift in Sources */,
 				4BF79F1D2D6F160F00EBFC77 /* VideoListFactory.swift in Sources */,
-				4B150DB92D6B157B00627188 /* DateFormater.swift in Sources */,
 				4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */,
 				4BF79F122D6E540A00EBFC77 /* APIEndpoint.swift in Sources */,
 				4BB9C2842D6664F800BCA13D /* AppDelegate.swift in Sources */,
