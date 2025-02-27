@@ -26,21 +26,16 @@ enum PostListAPIEndpoint: APIEndpoint {
         }
     }
 
-    var parameters: Parameters? {
-        switch self {
-        case .getPostList(let parameters):
-            return parameters
-        }
-    }
-
     func asURLRequest() throws -> URLRequest {
         let url = try self.baseUrl.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(self.path))
         urlRequest.method = self.method
         
-        if let parameters = self.parameters {
+        switch self {
+        case .getPostList(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }
+        
         return urlRequest
     }
 }

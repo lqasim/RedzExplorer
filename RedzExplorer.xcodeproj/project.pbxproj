@@ -127,6 +127,7 @@
 		4BB9C2822D6664F800BCA13D /* RedzExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				4BF79EFE2D6E34CF00EBFC77 /* Configuration */,
 				4B5F66C52D6F50F2002DAAA5 /* Coordinator */,
 				4BF79F102D6E53F300EBFC77 /* Networking */,
 				4BBC1FEC2D6E0F0A0086CA45 /* Assets */,
@@ -249,7 +250,6 @@
 		4BBC1FEB2D6E0E230086CA45 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				4BF79EFE2D6E34CF00EBFC77 /* Configuration */,
 				4BB9C2832D6664F800BCA13D /* AppDelegate.swift */,
 				4BB9C2852D6664F800BCA13D /* SceneDelegate.swift */,
 			);

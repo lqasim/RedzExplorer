@@ -58,11 +58,11 @@ class VideoListViewModel {
             self.appendable = false
         }
         
-        useCase.execute(page: self.currentPage, searchQueries: searchQueries) { [weak self] (result: Result<[VideoDTO],Error>) in
+        useCase.execute(page: self.currentPage, searchQueries: searchQueries) { [weak self] (result: Result<VideoDTOAPIResponse,Error>) in
             self?.isLoading = false
             switch result {
-            case .success(let newVideos):
-                let mappedVideos = newVideos.compactMap {
+            case .success(let data):
+                let mappedVideos = data.data.compactMap {
                     self?.videoMapper.map(dto: $0)
                 }
                 if self?.appendable == true {

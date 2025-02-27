@@ -8,25 +8,22 @@
 import Foundation
 import Alamofire
 
-protocol APIManagerProtocol {
-    func request<T: Decodable>(endpoint: APIEndpoint, responseType: T.Type, completion: @escaping (Result<T, Error>) -> Void)
+protocol DataSource {
+    func request<T: Decodable>(endpoint: APIEndpoint, completion: @escaping (Result<T, Error>) -> Void)
 }
 
-class APIManager: APIManagerProtocol {
-    
-    static let shared = APIManager()
-    
-    func request<T>(endpoint: APIEndpoint, responseType: T.Type, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+class AFNetworkDataSource: DataSource {
+        
+    func request<T: Decodable>(endpoint: APIEndpoint, completion: @escaping (Result<T, Error>) -> Void) {
         AF.request(endpoint)
             .validate()
-            .responseDecodable(of: responseType){ response in
+            .responseDecodable(of: T.self){ response in
                 switch response.result {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
                     completion(.failure(error))
                 }
-                
-            }
+        }
     }
 }

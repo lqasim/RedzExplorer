@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RepositoryProtocol {
-    func call<T:Decodable>(page: Int, searchQueries: [String]?, completion: @escaping (Result<[T], Error>) -> Void)
+    func call<T:Decodable>(endpoint: APIEndpoint, completion: @escaping (Result<T, Error>) -> Void)
 }

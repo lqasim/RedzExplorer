@@ -21,9 +21,9 @@ class VideoListFactory {
     }
     
     private static func createRepository() -> RepositoryProtocol {
-        return VideoRepository(apiManager: createApiManager())
+        return Repository(dataSource: createApiManager())
     }
-    private static func createApiManager() -> APIManagerProtocol {
-        return APIManager()
+    private static func createApiManager() -> DataSource {
+        return AFNetworkDataSource()
     }
 }
