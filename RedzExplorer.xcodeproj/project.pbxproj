@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B5F66C42D6F5020002DAAA5 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 4B5F66C32D6F5020002DAAA5 /* XCoordinator */; };
+		1E7535652D709EA6002E8310 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 1E7535642D709EA6002E8310 /* XCoordinator */; };
+		1E7535672D709EA6002E8310 /* XCoordinatorCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 1E7535662D709EA6002E8310 /* XCoordinatorCombine */; };
 		4B5F66C72D6F5110002DAAA5 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */; };
 		4B5F66C92D6F5135002DAAA5 /* VideoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */; };
 		4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */; };
@@ -88,11 +89,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E7535672D709EA6002E8310 /* XCoordinatorCombine in Frameworks */,
 				4B9529F82D68D1850065CDFE /* SkeletonView in Frameworks */,
 				4B9529F32D68CDF40065CDFE /* SDWebImage in Frameworks */,
 				4B9529F52D68CDF40065CDFE /* SDWebImageMapKit in Frameworks */,
 				4BB9C2A22D666F9B00BCA13D /* AlamofireImage in Frameworks */,
-				4B5F66C42D6F5020002DAAA5 /* XCoordinator in Frameworks */,
+				1E7535652D709EA6002E8310 /* XCoordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +370,8 @@
 				4B9529F22D68CDF40065CDFE /* SDWebImage */,
 				4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */,
 				4B9529F72D68D1850065CDFE /* SkeletonView */,
-				4B5F66C32D6F5020002DAAA5 /* XCoordinator */,
+				1E7535642D709EA6002E8310 /* XCoordinator */,
+				1E7535662D709EA6002E8310 /* XCoordinatorCombine */,
 			);
 			productName = RedzExplorer;
 			productReference = 4BB9C2802D6664F800BCA13D /* RedzExplorer.app */;
@@ -402,7 +405,7 @@
 				4BB9C2A02D666F9B00BCA13D /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				4B9529F62D68D1850065CDFE /* XCRemoteSwiftPackageReference "SkeletonView" */,
-				4B5F66C22D6F5020002DAAA5 /* XCRemoteSwiftPackageReference "XCoordinator" */,
+				1E7535632D709EA6002E8310 /* XCRemoteSwiftPackageReference "XCoordinator" */,
 			);
 			productRefGroup = 4BB9C2812D6664F800BCA13D /* Products */;
 			projectDirPath = "";
@@ -685,12 +688,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4B5F66C22D6F5020002DAAA5 /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
+		1E7535632D709EA6002E8310 /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/QuickBirdEng/XCoordinator";
+			repositoryURL = "https://github.com/QuickBirdEng/XCoordinator.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.2.1;
 			};
 		};
 		4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
@@ -720,10 +723,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4B5F66C32D6F5020002DAAA5 /* XCoordinator */ = {
+		1E7535642D709EA6002E8310 /* XCoordinator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B5F66C22D6F5020002DAAA5 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			package = 1E7535632D709EA6002E8310 /* XCRemoteSwiftPackageReference "XCoordinator" */;
 			productName = XCoordinator;
+		};
+		1E7535662D709EA6002E8310 /* XCoordinatorCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E7535632D709EA6002E8310 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinatorCombine;
 		};
 		4B9529F22D68CDF40065CDFE /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
