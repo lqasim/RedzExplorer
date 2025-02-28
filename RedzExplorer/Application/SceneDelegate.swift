@@ -6,34 +6,38 @@
 //
 
 import UIKit
+import XCoordinator
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var coordinator: VideoListCoordinator?
+    let router = AppCoordinator().strongRouter
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        if let windowScene = scene as? UIWindowScene {
+            self.window = UIWindow(windowScene: windowScene)
+            if let window = self.window {
+                router.setRoot(for: window)
+            }
+        }
         
-        window = UIWindow(windowScene: windowScene)
-        
-        let navigationController = UINavigationController()
-        navigationController.navigationBar.prefersLargeTitles = true
-        // Initialize the ViewModel
-        let videoListViewModel = VideoListFactory.create()
-        
-        // Initialize the Coordinator
-        coordinator = VideoListCoordinator(navigationController: navigationController, videoListViewModel: videoListViewModel)
-        
-        // Start the Coordinator to show the initial view
-        coordinator?.start()
-        
-        // Set the root view controller
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        //        let navigationController = UINavigationController()
+        //        navigationController.navigationBar.prefersLargeTitles = true
+        //        // Initialize the ViewModel
+        //        let videoListViewModel = VideoListFactory.create()
+        //
+        //        // Initialize the Coordinator
+        //        coordinator = VideoListCoordinator(navigationController: navigationController, videoListViewModel: videoListViewModel)
+        //
+        //        // Start the Coordinator to show the initial view
+        //        coordinator?.start()
+        //
+        //        // Set the root view controller
+        //        window?.rootViewController = navigationController
+        //        window?.makeKeyAndVisible()
         // normal way
         //        guard let windowScene = (scene as? UIWindowScene) else { return }
         //

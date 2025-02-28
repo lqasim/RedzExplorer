@@ -39,7 +39,7 @@ extension VideoListViewController: UITableViewDelegate {
         guard let selectedVideo = self.videoModel?.videos[indexPath.row] else{
             return
         }
-        coordinator?.showVideoDetails(video: selectedVideo)
+        videoModel?.showVideoDetails(selectedVideo)
 //        let videoDetailsView = VideoDetailSwiftUIView(video: selectedVideo)
 //        let hostingController = UIHostingController(rootView: videoDetailsView)
 //        self.navigationController?.pushViewController(hostingController, animated: true)
