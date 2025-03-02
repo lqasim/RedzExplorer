@@ -32,7 +32,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
         case .videoDetails(let video):
             let videoDetailsView = VideoDetailSwiftUIView(video: video)
             let hostingController = UIHostingController(rootView: videoDetailsView)
-            return .present(hostingController)
+            return .push(hostingController)
         }
     }
 }

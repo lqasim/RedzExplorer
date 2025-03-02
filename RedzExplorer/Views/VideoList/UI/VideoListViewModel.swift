@@ -70,7 +70,7 @@ class VideoListViewModel {
             self?.isLoading = false
             switch result {
             case .success(let data):
-                let mappedVideos = data.data.compactMap {
+                let mappedVideos = data.data.posts.compactMap {
                     self?.videoMapper.map(dto: $0)
                 }
                 if self?.appendable == true {

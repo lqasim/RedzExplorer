@@ -45,14 +45,14 @@ class VideoCellTableViewCell: UITableViewCell {
         
         if let url = URL(string: thumbnailUrlString) {
             videoThumbnailImg.sd_setImage(with: url) { image, error, cacheType, url in
-                
+
                 self.videoThumbnailImg.hideSkeleton()
                 if let error = error {
                     print("Error loading image: \(error.localizedDescription)")
                 }
-                
+
             }
-            
+
         }
         
         

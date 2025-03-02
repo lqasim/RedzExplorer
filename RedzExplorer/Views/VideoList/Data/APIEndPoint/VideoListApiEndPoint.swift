@@ -35,7 +35,6 @@ enum PostListAPIEndpoint: APIEndpoint {
         case .getPostList(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }
-        
         return urlRequest
     }
 }
