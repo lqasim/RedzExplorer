@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		1E7535652D709EA6002E8310 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 1E7535642D709EA6002E8310 /* XCoordinator */; };
 		1E7535672D709EA6002E8310 /* XCoordinatorCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 1E7535662D709EA6002E8310 /* XCoordinatorCombine */; };
-		4B5F66C72D6F5110002DAAA5 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */; };
-		4B5F66C92D6F5135002DAAA5 /* VideoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */; };
+		4B24311D2D746F7D00513E12 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4B24311C2D746F7D00513E12 /* SDWebImage */; };
 		4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */; };
 		4B73EA212D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73EA202D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift */; };
 		4B9529F02D6894FF0065CDFE /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */; };
-		4B9529F32D68CDF40065CDFE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F22D68CDF40065CDFE /* SDWebImage */; };
-		4B9529F52D68CDF40065CDFE /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */; };
 		4B9529F82D68D1850065CDFE /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F72D68D1850065CDFE /* SkeletonView */; };
 		4BA9F1B92D70C81500C2298D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9F1B82D70C81500C2298D /* AppCoordinator.swift */; };
 		4BB9C2842D6664F800BCA13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2832D6664F800BCA13D /* AppDelegate.swift */; };
@@ -91,10 +88,9 @@
 			files = (
 				1E7535672D709EA6002E8310 /* XCoordinatorCombine in Frameworks */,
 				4B9529F82D68D1850065CDFE /* SkeletonView in Frameworks */,
-				4B9529F32D68CDF40065CDFE /* SDWebImage in Frameworks */,
-				4B9529F52D68CDF40065CDFE /* SDWebImageMapKit in Frameworks */,
 				4BB9C2A22D666F9B00BCA13D /* AlamofireImage in Frameworks */,
 				1E7535652D709EA6002E8310 /* XCoordinator in Frameworks */,
+				4B24311D2D746F7D00513E12 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,11 +362,10 @@
 			name = RedzExplorer;
 			packageProductDependencies = (
 				4BB9C2A12D666F9B00BCA13D /* AlamofireImage */,
-				4B9529F22D68CDF40065CDFE /* SDWebImage */,
-				4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */,
 				4B9529F72D68D1850065CDFE /* SkeletonView */,
 				1E7535642D709EA6002E8310 /* XCoordinator */,
 				1E7535662D709EA6002E8310 /* XCoordinatorCombine */,
+				4B24311C2D746F7D00513E12 /* SDWebImage */,
 			);
 			productName = RedzExplorer;
 			productReference = 4BB9C2802D6664F800BCA13D /* RedzExplorer.app */;
@@ -402,9 +397,9 @@
 			mainGroup = 4BB9C2772D6664F800BCA13D;
 			packageReferences = (
 				4BB9C2A02D666F9B00BCA13D /* XCRemoteSwiftPackageReference "AlamofireImage" */,
-				4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				4B9529F62D68D1850065CDFE /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				1E7535632D709EA6002E8310 /* XCRemoteSwiftPackageReference "XCoordinator" */,
+				4B24311B2D746F7D00513E12 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 4BB9C2812D6664F800BCA13D /* Products */;
 			projectDirPath = "";
@@ -694,12 +689,12 @@
 				minimumVersion = 2.2.1;
 			};
 		};
-		4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		4B24311B2D746F7D00513E12 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = exactVersion;
+				version = 5.20.0;
 			};
 		};
 		4B9529F62D68D1850065CDFE /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
@@ -731,15 +726,10 @@
 			package = 1E7535632D709EA6002E8310 /* XCRemoteSwiftPackageReference "XCoordinator" */;
 			productName = XCoordinatorCombine;
 		};
-		4B9529F22D68CDF40065CDFE /* SDWebImage */ = {
+		4B24311C2D746F7D00513E12 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = 4B24311B2D746F7D00513E12 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
-		};
-		4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B9529F12D68CDF40065CDFE /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
 		};
 		4B9529F72D68D1850065CDFE /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;

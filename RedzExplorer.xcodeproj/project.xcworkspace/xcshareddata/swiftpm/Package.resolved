@@ -1,5 +1,4 @@
 {
-  "originHash" : "7b1b28fd891a0132a876893cc16d3e3782c5201fd21277d97569038b3798436e",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -33,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
-        "revision" : "e7d3256c497af9330a0df866ee38f544ddd87c49",
-        "version" : "5.20.1"
+        "revision" : "10d06f6a33bafae8c164fbfd1f03391f6d4692b3",
+        "version" : "5.20.0"
       }
     },
     {
@@ -49,12 +48,12 @@
     {
       "identity" : "xcoordinator",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/QuickBirdEng/XCoordinator",
+      "location" : "https://github.com/QuickBirdEng/XCoordinator.git",
       "state" : {
         "revision" : "00b066139ed0bf2f68549a7d87434ed36dfa6dea",
         "version" : "2.2.1"
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
