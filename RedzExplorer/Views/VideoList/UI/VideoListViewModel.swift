@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XCoordinator
 
 class VideoListViewModel {
     
@@ -23,10 +24,13 @@ class VideoListViewModel {
     private let videoMapper: VideoMapper
     
     private var requestQueue: [(() -> Void)] = []
+    // router
+    var appRouter: WeakRouter<AppRoute>
     
-    init(useCase: FetchVideosUseCaseProtocol, videoMapper: VideoMapper) {
+    init(useCase: FetchVideosUseCaseProtocol, videoMapper: VideoMapper, router: WeakRouter<AppRoute>) {
         self.useCase = useCase
         self.videoMapper = videoMapper
+        self.appRouter = router
     }
     
     public func retrieveVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
@@ -45,6 +49,10 @@ class VideoListViewModel {
             let nextRequest = requestQueue.removeFirst()
             nextRequest()
         }
+    }
+    
+    func showVideoDetails(_ post: Video) {
+        self.appRouter.trigger(.videoDetails(post))
     }
     
     private func loadVideos(searchQueries: [String]?, completion: @escaping() -> Void) {

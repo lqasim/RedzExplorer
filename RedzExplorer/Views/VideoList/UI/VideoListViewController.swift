@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import XCoordinator
 
 class VideoListViewController: UIViewController {
     
@@ -15,8 +16,6 @@ class VideoListViewController: UIViewController {
     
     private var activityIndicator: UIActivityIndicatorView!
     
-    var coordinator: VideoListCoordinator?
-
     var selectedCategories: Set<Category> = [.all]
     
     var videoModel: VideoListViewModel?

@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import XCoordinator
 
 class VideoListFactory {
     
-    static func create() -> VideoListViewModel {
-        return VideoListViewModel(useCase: createUseCase(), videoMapper: createMapper())
+    static func create(router: WeakRouter<AppRoute>) -> VideoListViewModel {
+        return VideoListViewModel(useCase: createUseCase(), videoMapper: createMapper(),router: router)
     }
     private static func createMapper() -> VideoMapper {
         return VideoMapper()

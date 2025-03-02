@@ -17,6 +17,7 @@
 		4B9529F32D68CDF40065CDFE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F22D68CDF40065CDFE /* SDWebImage */; };
 		4B9529F52D68CDF40065CDFE /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F42D68CDF40065CDFE /* SDWebImageMapKit */; };
 		4B9529F82D68D1850065CDFE /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9529F72D68D1850065CDFE /* SkeletonView */; };
+		4BA9F1B92D70C81500C2298D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9F1B82D70C81500C2298D /* AppCoordinator.swift */; };
 		4BB9C2842D6664F800BCA13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2832D6664F800BCA13D /* AppDelegate.swift */; };
 		4BB9C2862D6664F800BCA13D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2852D6664F800BCA13D /* SceneDelegate.swift */; };
 		4BB9C2882D6664F800BCA13D /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C2872D6664F800BCA13D /* VideoListViewController.swift */; };
@@ -48,11 +49,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
-		4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCoordinator.swift; sourceTree = "<group>"; };
 		4B73EA1E2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4B73EA202D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailSwiftUIView.swift; sourceTree = "<group>"; };
 		4B9529EF2D6894FF0065CDFE /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		4BA9F1B82D70C81500C2298D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4BB9C2802D6664F800BCA13D /* RedzExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedzExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB9C2832D6664F800BCA13D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BB9C2852D6664F800BCA13D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,8 +104,7 @@
 		4B5F66C52D6F50F2002DAAA5 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				4B5F66C62D6F5110002DAAA5 /* CoordinatorProtocol.swift */,
-				4B5F66C82D6F5135002DAAA5 /* VideoListCoordinator.swift */,
+				4BA9F1B82D70C81500C2298D /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -443,12 +442,12 @@
 				4B73EA1F2D6A0291001DF0E7 /* VideoListViewControllerExtensions.swift in Sources */,
 				4BF79F122D6E540A00EBFC77 /* APIEndpoint.swift in Sources */,
 				4BB9C2842D6664F800BCA13D /* AppDelegate.swift in Sources */,
+				4BA9F1B92D70C81500C2298D /* AppCoordinator.swift in Sources */,
 				4BF79F092D6E3CEE00EBFC77 /* Categories.swift in Sources */,
 				4BF79F172D6E859F00EBFC77 /* APIManager.swift in Sources */,
 				4BF79F0E2D6E519D00EBFC77 /* StringUtils.swift in Sources */,
 				4BF79F142D6E832000EBFC77 /* VideoListApiEndPoint.swift in Sources */,
 				4BB9C2A72D670D7E00BCA13D /* UserDto.swift in Sources */,
-				4B5F66C72D6F5110002DAAA5 /* CoordinatorProtocol.swift in Sources */,
 				4B9529F02D6894FF0065CDFE /* CategoryCollectionViewCell.swift in Sources */,
 				4BF79F0C2D6E50A100EBFC77 /* DateUtils.swift in Sources */,
 				4BBC1FEA2D6DB9AC0086CA45 /* VideoMapper.swift in Sources */,
@@ -458,7 +457,6 @@
 				4BBC1FE32D6DB7810086CA45 /* Video.swift in Sources */,
 				4BBC1FD82D6DB5A90086CA45 /* VideoRepository.swift in Sources */,
 				4BF79F052D6E36E500EBFC77 /* ConfigurationManager.swift in Sources */,
-				4B5F66C92D6F5135002DAAA5 /* VideoListCoordinator.swift in Sources */,
 				4BB9C2B12D67449600BCA13D /* VideoCellTableViewCell.swift in Sources */,
 				4B73EA212D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift in Sources */,
 				4BBC1FE72D6DB7B10086CA45 /* User.swift in Sources */,
