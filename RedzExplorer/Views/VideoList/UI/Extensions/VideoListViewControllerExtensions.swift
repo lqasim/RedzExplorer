@@ -40,11 +40,6 @@ extension VideoListViewController: UITableViewDelegate {
             return
         }
         videoModel?.showVideoDetails(selectedVideo)
-//        let videoDetailsView = VideoDetailSwiftUIView(video: selectedVideo)
-//        let hostingController = UIHostingController(rootView: videoDetailsView)
-//        self.navigationController?.pushViewController(hostingController, animated: true)
-        
-        
     }
     
     // In order to implement pagination, utilize screen width and when user reaches the end

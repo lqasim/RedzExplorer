@@ -32,8 +32,4 @@ class ConfigurationManager {
     func getBaseURL() -> String? {
          return configurations?.APIBASEURL
      }
-     
-//     func getRedzPostListAPI() -> String? {
-//         return configurations?.RedzPostListAPI
-//     }
 }
