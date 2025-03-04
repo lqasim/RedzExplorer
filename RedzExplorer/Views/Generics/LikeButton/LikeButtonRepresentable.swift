@@ -8,22 +8,30 @@
 import SwiftUI
 
 struct LikeButtonRepresentable: UIViewRepresentable {
-    typealias UIViewType = LikeButton
+    //    typealias UIViewType = LikeButton
+    @Binding var isLiked: Bool
     
     class Coordinator: NSObject {
         var button: LikeButton
+        @Binding var isLiked: Bool
         
-        init(button: LikeButton) {
+        init(button: LikeButton, isLiked: Binding<Bool>) {
             self.button = button
+            self._isLiked = isLiked
         }
         
         @objc func toggleLike() {
+            isLiked.toggle()
             button.toggleLike()
         }
     }
     
     func makeUIView(context: Context) -> LikeButton {
-        let button = LikeButton(type: .system)
+        let button = LikeButton()
+        
+        button.likeCountChange = { isLiked in
+            context.coordinator.isLiked = isLiked
+        }
         button.addTarget(context.coordinator, action: #selector(Coordinator.toggleLike), for: .touchUpInside)
         return button
     }
@@ -32,7 +40,7 @@ struct LikeButtonRepresentable: UIViewRepresentable {
     
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(button: LikeButton())
+        return Coordinator(button: LikeButton(), isLiked: $isLiked)
         
     }
     

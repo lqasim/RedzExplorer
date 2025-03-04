@@ -10,6 +10,8 @@ import SwiftUI
 struct VideoDetailSwiftUIView: View {
     var video: Video
     
+    @State private var isLiked: Bool = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -64,9 +66,10 @@ struct VideoDetailSwiftUIView: View {
                     // likes secion
                     HStack(spacing: 30) {
                         HStack {
-                            LikeButtonRepresentable().frame(width: 30, height: 30)
+                            LikeButtonRepresentable(isLiked: $isLiked)
+                                .frame(width: 30, height: 30)
                             
-                            Text("\(video.totalLikesCount) Likes")
+                            Text("\(video.totalLikesCount + (isLiked ? 0 : 1)) Likes")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                         }

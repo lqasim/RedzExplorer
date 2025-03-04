@@ -14,6 +14,8 @@ class LikeButton: UIButton {
     
     private var isLiked = false
     
+    var likeCountChange: ((Bool) -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
@@ -31,9 +33,10 @@ class LikeButton: UIButton {
     }
     
     @objc func toggleLike() {
-        isLiked = !isLiked
+        isLiked.toggle()
         let image = isLiked ? filledHeartImage : emptyHeartImage
         setImage(image, for: .normal)
+        likeCountChange?(isLiked)
     }
 }
 
