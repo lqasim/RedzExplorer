@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VideoDetailSwiftUIView: View {
     var video: Video
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -64,12 +64,12 @@ struct VideoDetailSwiftUIView: View {
                     // likes secion
                     HStack(spacing: 30) {
                         HStack {
-                            Text("❤️")
+                            LikeButtonRepresentable().frame(width: 30, height: 30)
+                            
                             Text("\(video.totalLikesCount) Likes")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                         }
-                        
                         // Comments Section
                         HStack {
                             Text("💬 \(video.totalCommentsCount) Comments")
@@ -90,7 +90,7 @@ struct VideoDetailSwiftUIView: View {
                 Text("Publish Date: \(video.publishedAt.toDate()?.toString() ?? "")").font(.subheadline)
                 
                 Text("\(video.postCategory.count > 1 ? "Categories: " : "Category: ")\(video.postCategory.joined(separator: ", ") )").font(.subheadline).fontWeight(.semibold)
-
+                
                 Text("Description\n \(video.description)")
                     .font(.body)
                     .fontWeight(.semibold)

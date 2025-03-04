@@ -32,6 +32,8 @@
 		4BBC1FE52D6DB7A80086CA45 /* PostImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FE42D6DB7A80086CA45 /* PostImage.swift */; };
 		4BBC1FE72D6DB7B10086CA45 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FE62D6DB7B10086CA45 /* User.swift */; };
 		4BBC1FEA2D6DB9AC0086CA45 /* VideoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC1FE92D6DB9AC0086CA45 /* VideoMapper.swift */; };
+		4BD9AA922D76F7B200E4CB15 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9AA912D76F7B200E4CB15 /* LikeButton.swift */; };
+		4BD9AA952D76F8D700E4CB15 /* LikeButtonRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9AA942D76F8D700E4CB15 /* LikeButtonRepresentable.swift */; };
 		4BF79F002D6E34F300EBFC77 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF79EFF2D6E34F300EBFC77 /* Config.plist */; };
 		4BF79F032D6E360A00EBFC77 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF79F022D6E360A00EBFC77 /* Configurations.swift */; };
 		4BF79F052D6E36E500EBFC77 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF79F042D6E36E500EBFC77 /* ConfigurationManager.swift */; };
@@ -68,6 +70,8 @@
 		4BBC1FE42D6DB7A80086CA45 /* PostImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImage.swift; sourceTree = "<group>"; };
 		4BBC1FE62D6DB7B10086CA45 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4BBC1FE92D6DB9AC0086CA45 /* VideoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMapper.swift; sourceTree = "<group>"; };
+		4BD9AA912D76F7B200E4CB15 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		4BD9AA942D76F8D700E4CB15 /* LikeButtonRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonRepresentable.swift; sourceTree = "<group>"; };
 		4BF79EFF2D6E34F300EBFC77 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4BF79F022D6E360A00EBFC77 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		4BF79F042D6E36E500EBFC77 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 		4BBC1FD12D6DB4F10086CA45 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4BD9AA8E2D76F77B00E4CB15 /* Generics */,
 				4BF79F062D6E3CD300EBFC77 /* Domain */,
 				4BBC1FED2D6E10100086CA45 /* VideoList */,
 				4BBC1FD22D6DB5020086CA45 /* VideoDetails */,
@@ -282,6 +287,23 @@
 				4BB9C2872D6664F800BCA13D /* VideoListViewController.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		4BD9AA8E2D76F77B00E4CB15 /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				4BD9AA932D76F8A900E4CB15 /* LikeButton */,
+			);
+			path = Generics;
+			sourceTree = "<group>";
+		};
+		4BD9AA932D76F8A900E4CB15 /* LikeButton */ = {
+			isa = PBXGroup;
+			children = (
+				4BD9AA912D76F7B200E4CB15 /* LikeButton.swift */,
+				4BD9AA942D76F8D700E4CB15 /* LikeButtonRepresentable.swift */,
+			);
+			path = LikeButton;
 			sourceTree = "<group>";
 		};
 		4BF79EFE2D6E34CF00EBFC77 /* Configuration */ = {
@@ -449,11 +471,13 @@
 				4BB9C2862D6664F800BCA13D /* SceneDelegate.swift in Sources */,
 				4BF79F032D6E360A00EBFC77 /* Configurations.swift in Sources */,
 				4BBC1FDF2D6DB6480086CA45 /* VideoListViewModel.swift in Sources */,
+				4BD9AA922D76F7B200E4CB15 /* LikeButton.swift in Sources */,
 				4BBC1FE32D6DB7810086CA45 /* Video.swift in Sources */,
 				4BBC1FD82D6DB5A90086CA45 /* VideoRepository.swift in Sources */,
 				4BF79F052D6E36E500EBFC77 /* ConfigurationManager.swift in Sources */,
 				4BB9C2B12D67449600BCA13D /* VideoCellTableViewCell.swift in Sources */,
 				4B73EA212D6A0562001DF0E7 /* VideoDetailSwiftUIView.swift in Sources */,
+				4BD9AA952D76F8D700E4CB15 /* LikeButtonRepresentable.swift in Sources */,
 				4BBC1FE72D6DB7B10086CA45 /* User.swift in Sources */,
 				4BF79F1A2D6E861700EBFC77 /* RepositoryProtocol.swift in Sources */,
 			);
