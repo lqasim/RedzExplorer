@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Video {
+struct Video: Decodable {
     let id: Int
     let description: String
     let category: String

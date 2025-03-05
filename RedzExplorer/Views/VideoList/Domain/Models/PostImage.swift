@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PostImage {
+struct PostImage: Decodable {
     let url: String
 }

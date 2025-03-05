@@ -8,22 +8,38 @@
 import Foundation
 import XCoordinator
 
+enum LoadingState<T: Decodable>: Equatable {
+    
+    case idle
+    case loading
+    case loaded(_ result: Result<T, Error>)
+    
+    static func == (lhs: LoadingState<T>, rhs: LoadingState<T>) -> Bool {
+        switch (lhs, rhs) {
+        case (.idle, .idle), (.loading, .loading), (.loaded(_), .loaded(_)):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 class VideoListViewModel {
     
-    var didFetchVideos: (() -> Void)?
-    var didFailWithError: ((String) -> Void)?
+    var didUpdateLoadingState: ((LoadingState<[Video]>) -> ())?
+    
+    var loadingState: LoadingState<[Video]> = .idle {
+        didSet {
+            didUpdateLoadingState?(loadingState)
+        }
+    }
     
     private(set) var videos = [Video]()
-    
-    private var isLoading = false
     private var currentPage = 1
-    private var searchQueries: [String]?
-    private var appendable = true
     
     private let useCase: FetchVideosUseCaseProtocol
     private let videoMapper: VideoMapper
     
-    private var requestQueue: [(() -> Void)] = []
     // router
     var appRouter: WeakRouter<AppRoute>
     
@@ -33,59 +49,41 @@ class VideoListViewModel {
         self.appRouter = router
     }
     
-    public func retrieveVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
-        requestQueue.append {
-            self.loadVideos(searchQueries: searchQueries, completion: completion)
-        }
+    func loadMoreVideos(searchQueries: [String]?) {
+        self.currentPage += 1
         
-        // Start processing if no other requests are being handled
-        if !isLoading {
-            processNextRequest()
-        }
-    }
-    
-    private func processNextRequest() {
-        if !requestQueue.isEmpty {
-            let nextRequest = requestQueue.removeFirst()
-            nextRequest()
-        }
+        self.loadVideos(searchQueries: searchQueries)
     }
     
     func showVideoDetails(_ post: Video) {
         self.appRouter.trigger(.videoDetails(post))
     }
     
-    private func loadVideos(searchQueries: [String]?, completion: @escaping() -> Void) {
-        guard !isLoading else { return }
+    func loadVideos(searchQueries: [String]?) {
+        guard loadingState != .loading
+        else { return }
         
-        isLoading = true
-        
-        if self.searchQueries != searchQueries {
-            self.searchQueries = searchQueries
-            self.currentPage = 1
-            self.appendable = false
-        }
+        loadingState = .loading
         
         useCase.execute(page: self.currentPage, searchQueries: searchQueries) { [weak self] (result: Result<VideoDTOAPIResponse,Error>) in
-            self?.isLoading = false
+            guard let self = self
+            else { return }
+            
             switch result {
             case .success(let data):
+                
                 let mappedVideos = data.data.posts.compactMap {
-                    self?.videoMapper.map(dto: $0)
+                    self.videoMapper.map(dto: $0)
                 }
-                if self?.appendable == true {
-                    self?.videos.append(contentsOf: mappedVideos)
-                    self?.currentPage += 1
-                } else {
-                    self?.videos = mappedVideos
-                    self?.appendable = true
-                }
-                self?.didFetchVideos?()
-                completion()
+                
+                self.videos.append(contentsOf: mappedVideos)
+
+                loadingState = .loaded(.success(self.videos))
             case .failure(let error):
-                self?.didFailWithError?("Failed to fetch videos: \(error.localizedDescription)")
+                loadingState = .loaded(.failure(error))
             }
-            self?.processNextRequest()
-        }
+            
+            loadingState = .idle
+         }
     }
 }

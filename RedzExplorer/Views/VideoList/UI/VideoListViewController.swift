@@ -20,9 +20,6 @@ class VideoListViewController: UIViewController {
     
     var videoModel: VideoListViewModel?
     
-    // limit pagination to one page at a time
-    var isPagination = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,26 +28,52 @@ class VideoListViewController: UIViewController {
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
+        
         //setting up the category collection
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        
         // setting up the video list
         videoList.dataSource = self
         videoList.delegate = self
         
-        // prepare videoModel
-        prepareVideoModel()
+  
         // initially load all videos
         loadVideos(searchQueries: nil)
     }
     
     private func loadVideos(searchQueries: [String]?) {
-        
-        activityIndicator.startAnimating()
-        videoModel?.retrieveVideos(searchQueries: searchQueries) {
-            self.activityIndicator.stopAnimating()
-            self.isPagination = false
+                
+        videoModel?.didUpdateLoadingState = { [weak self] (state: LoadingState<[Video]>) in
+            guard let self
+            else { return }
+            self.videoList.isScrollEnabled = true
+            
+            switch state {
+            case .idle:
+                activityIndicator.stopAnimating()
+            case .loading:
+                activityIndicator.startAnimating()
+            case .loaded(let result):
+                switch result {
+                case .success(let videos):
+                    if videos.count == 0 {
+                        let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width ?? 150, height: self.view.bounds.size.height))
+                        emptyLabel.text = "No Related Videos available"
+                        emptyLabel.textAlignment = NSTextAlignment.center
+                        self.videoList.backgroundView = emptyLabel
+                        self.videoList.separatorStyle = UITableViewCell.SeparatorStyle.none
+                    } else {
+                        self.videoList.reloadData()
+                    }
+                case .failure(let error):
+                    self.showError(message: error.localizedDescription)
+                }
+            }
         }
+        
+        videoModel?.loadVideos(searchQueries: searchQueries)
+
     }
     
     private func showError(message: String) {
@@ -59,23 +82,6 @@ class VideoListViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func prepareVideoModel() {
-        videoModel?.didFetchVideos = { [weak self] in
-            self?.videoList.isScrollEnabled = true
-            if self?.videoModel?.videos.count == 0 {
-                let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self?.view.bounds.size.width ?? 150, height: self?.view.bounds.size.height ?? 150))
-                emptyLabel.text = "No Related Videos available"
-                emptyLabel.textAlignment = NSTextAlignment.center
-                self?.videoList.backgroundView = emptyLabel
-                self?.videoList.separatorStyle = UITableViewCell.SeparatorStyle.none
-            }
-            self?.videoList.reloadData()
-        }
-        
-        videoModel?.didFailWithError = { [weak self]err in
-            self?.showError(message: err)
-        }
-    }
     
     func filterVideosByCategory() {
         // Scroll back to top and set flag while filtering

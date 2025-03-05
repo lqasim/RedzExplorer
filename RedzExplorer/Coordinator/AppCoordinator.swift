@@ -29,6 +29,7 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             }
             videoListVC.videoModel = VideoListFactory.create(router: weakRouter)
             return .push(videoListVC)
+            
         case .videoDetails(let video):
             let videoDetailsView = VideoDetailSwiftUIView(video: video)
             let hostingController = UIHostingController(rootView: videoDetailsView)
