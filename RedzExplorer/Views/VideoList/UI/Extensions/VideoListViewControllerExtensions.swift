@@ -30,6 +30,12 @@ extension VideoListViewController: UITableViewDataSource {
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 350
+    }
+    
+    
+    
 }
 
 //Video list delegates
@@ -42,25 +48,36 @@ extension VideoListViewController: UITableViewDelegate {
         videoModel?.showVideoDetails(selectedVideo)
     }
     
-    // In order to implement pagination, utilize screen width and when user reaches the end
-    // get next page info
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // add a checking that the scrolling is happining on the tableview not the collection horizontal scrollable
-        if scrollView == videoList {
-            let contentHeight = scrollView.contentSize.height
-            let scrollPosition = scrollView.contentOffset.y + scrollView.frame.size.height
-            
-            if contentHeight - scrollPosition < 100 && videoModel?.loadingState != .loading {
-                videoModel?.loadMoreVideos(searchQueries: [])
-                // needs to load next page
-                filterVideosByCategory()
+    // pagination based on willDisplay
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let totalRows = videoList.numberOfRows(inSection: 0)
+        if indexPath.row == totalRows - 3 || indexPath.row == totalRows - 2 {
+            // load more videos if not currently loading
+            if videoModel?.loadingState != .loading {
+                let searchQueryies = selectedCategories.contains(Category.all) ? nil : selectedCategories.map({$0.displayName})
+                videoModel?.loadMoreVideos(searchQueries: searchQueryies)
             }
         }
-        
     }
+
+    // In order to implement pagination, utilize screen width and when user reaches the end
+    // get next page info
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        // add a checking that the scrolling is happining on the tableview not the collection horizontal scrollable
+//        if scrollView == videoList {
+//            let contentHeight = scrollView.contentSize.height
+//            let scrollPosition = scrollView.contentOffset.y + scrollView.frame.size.height
+//
+//            if contentHeight - scrollPosition < 100 && videoModel?.loadingState != .loading {
+//                let searchQueryies = selectedCategories.contains(Category.all) ? nil : selectedCategories.map({$0.displayName})
+//                videoModel?.loadMoreVideos(searchQueries:searchQueryies)
+//            }
+//        }
+//
+//    }
     
     // willDisplay -3
-    // height for row
 }
 
 

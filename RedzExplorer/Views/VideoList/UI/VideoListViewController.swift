@@ -37,13 +37,13 @@ class VideoListViewController: UIViewController {
         videoList.dataSource = self
         videoList.delegate = self
         
-  
+        
         // initially load all videos
         loadVideos(searchQueries: nil)
     }
     
-    private func loadVideos(searchQueries: [String]?) {
-                
+    private func loadVideos(searchQueries: [String]?, filtering: Bool = false) {
+        
         videoModel?.didUpdateLoadingState = { [weak self] (state: LoadingState<[Video]>) in
             guard let self
             else { return }
@@ -58,7 +58,7 @@ class VideoListViewController: UIViewController {
                 switch result {
                 case .success(let videos):
                     if videos.count == 0 {
-                        let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width ?? 150, height: self.view.bounds.size.height))
+                        let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
                         emptyLabel.text = "No Related Videos available"
                         emptyLabel.textAlignment = NSTextAlignment.center
                         self.videoList.backgroundView = emptyLabel
@@ -71,9 +71,13 @@ class VideoListViewController: UIViewController {
                 }
             }
         }
+        if filtering {
+            videoModel?.filterByCategory(searchQueries: searchQueries)
+        }
+        else{
+            videoModel?.loadMoreVideos(searchQueries: searchQueries)
+        }
         
-        videoModel?.loadVideos(searchQueries: searchQueries)
-
     }
     
     private func showError(message: String) {
@@ -86,14 +90,14 @@ class VideoListViewController: UIViewController {
     func filterVideosByCategory() {
         // Scroll back to top and set flag while filtering
         videoList.isScrollEnabled = false
-
+        
         if self.selectedCategories.contains(.all){
-            loadVideos(searchQueries: nil)
+            loadVideos(searchQueries: nil, filtering: true)
         } else{
             let categories = Array(selectedCategories)
             loadVideos(searchQueries: categories.map({
                 $0.displayName
-            }))
+            }), filtering: true)
         }
     }
     

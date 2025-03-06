@@ -35,7 +35,7 @@ class VideoListViewModel {
     }
     
     private(set) var videos = [Video]()
-    private var currentPage = 1
+     var currentPage = 1
     
     private let useCase: FetchVideosUseCaseProtocol
     private let videoMapper: VideoMapper
@@ -50,21 +50,26 @@ class VideoListViewModel {
     }
     
     func loadMoreVideos(searchQueries: [String]?) {
+        self.loadVideos(searchQueries: searchQueries)
         self.currentPage += 1
         
-        self.loadVideos(searchQueries: searchQueries)
+    }
+    
+    func filterByCategory(searchQueries: [String]?) {
+        self.currentPage = 1
+        self.videos.removeAll()
+        loadVideos(searchQueries: searchQueries)
     }
     
     func showVideoDetails(_ post: Video) {
         self.appRouter.trigger(.videoDetails(post))
     }
     
-    func loadVideos(searchQueries: [String]?) {
+    private func loadVideos(searchQueries: [String]?) {
         guard loadingState != .loading
         else { return }
         
         loadingState = .loading
-        
         useCase.execute(page: self.currentPage, searchQueries: searchQueries) { [weak self] (result: Result<VideoDTOAPIResponse,Error>) in
             guard let self = self
             else { return }
@@ -77,13 +82,13 @@ class VideoListViewModel {
                 }
                 
                 self.videos.append(contentsOf: mappedVideos)
-
+                
                 loadingState = .loaded(.success(self.videos))
             case .failure(let error):
                 loadingState = .loaded(.failure(error))
             }
             
             loadingState = .idle
-         }
+        }
     }
 }
