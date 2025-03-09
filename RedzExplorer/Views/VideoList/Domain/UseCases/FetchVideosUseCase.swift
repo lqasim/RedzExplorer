@@ -61,10 +61,3 @@ class FetchVideosUseCase: FetchVideosUseCaseProtocol {
         videoRepository.call(endpoint: endPoint, completion: completion)
     }
 }
-
-
-//    // default required params
-//    parameters["city_id"] = "192957"
-//    parameters["latitude"] = "8.12548000"
-//    parameters["longitude"] = "7.282820"
-//    parameters["type"] = "CITY"

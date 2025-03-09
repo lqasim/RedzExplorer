@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LikeButtonRepresentable: UIViewRepresentable {
-    //    typealias UIViewType = LikeButton
+  
     @Binding var isLiked: Bool
     
     class Coordinator: NSObject {

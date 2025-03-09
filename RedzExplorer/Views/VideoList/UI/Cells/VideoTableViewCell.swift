@@ -10,17 +10,17 @@ import SDWebImage
 import SkeletonView
 
 class VideoTableViewCell: UITableViewCell {
-    static let identifier = "VideoCellTableViewCell"
+    static let identifier = "VideoTableViewCell"
     
-    @IBOutlet weak var videoThumbnailImg: UIImageView!
+    @IBOutlet private weak var videoThumbnailImg: UIImageView!
     
-    @IBOutlet weak var usenNameLbl: UILabel!
+    @IBOutlet private weak var usenNameLbl: UILabel!
     
-    @IBOutlet weak var phoneNoLal: UILabel!
+    @IBOutlet private weak var phoneNoLal: UILabel!
     
-    @IBOutlet weak var videoCategoryLbl: UILabel!
+    @IBOutlet private weak var videoCategoryLbl: UILabel!
     
-    @IBOutlet weak var videoDescriptionLbl: UILabel!
+    @IBOutlet private weak var videoDescriptionLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,13 +63,15 @@ class VideoTableViewCell: UITableViewCell {
         self.videoDescriptionLbl.semanticContentAttribute = isTextRTL(descriptionText) ? .forceRightToLeft : .forceLeftToRight
     }
     
-    func isTextRTL(_ text: String) -> Bool {
+    private func isTextRTL(_ text: String) -> Bool {
         return text.rangeOfCharacter(from: CharacterSet(charactersIn: "\u{0600}-\u{06FF}")) != nil
     }
 }
 
+
+
 extension VideoTableViewCell {
-    class func getCellHeight(in tableView: UITableView) -> CGFloat {
-        return tableView.frame.height - tableView.safeAreaInsets.top - tableView.safeAreaInsets.bottom
+    class func getCellHeight() -> CGFloat {
+        return 350
     }
 }

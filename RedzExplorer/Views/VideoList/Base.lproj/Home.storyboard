@@ -67,7 +67,7 @@
                                         <rect key="frame" x="0.0" y="80" width="373" height="703"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VideoCellTableViewCell" id="xFh-18-RYF" customClass="VideoCellTableViewCell" customModule="RedzExplorer" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VideoTableViewCell" id="xFh-18-RYF" customClass="VideoTableViewCell" customModule="RedzExplorer" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="373" height="338"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xFh-18-RYF" id="YwM-TE-voy">
@@ -125,7 +125,36 @@
                                                     <outlet property="videoThumbnailImg" destination="Veo-Ff-Uci" id="1ug-zV-XIh"/>
                                                 </connections>
                                             </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmptyTableViewCell" id="ahi-s9-FJg" customClass="EmptyTableViewCell" customModule="RedzExplorer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="388" width="373" height="43.666667938232422"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ahi-s9-FJg" id="q0e-i2-tSo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-py-gaD">
+                                                            <rect key="frame" x="30" y="9.3333333333333339" width="313" height="25.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="fSo-py-gaD" firstAttribute="centerX" secondItem="q0e-i2-tSo" secondAttribute="centerX" id="IQb-kd-qFJ"/>
+                                                        <constraint firstItem="fSo-py-gaD" firstAttribute="centerY" secondItem="q0e-i2-tSo" secondAttribute="centerY" id="QlM-Og-xN4"/>
+                                                        <constraint firstItem="fSo-py-gaD" firstAttribute="leading" secondItem="q0e-i2-tSo" secondAttribute="leadingMargin" constant="10" id="l45-a7-fC9"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="messageLbl" destination="fSo-py-gaD" id="xGK-bc-x9R"/>
+                                                </connections>
+                                            </tableViewCell>
                                         </prototypes>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -146,8 +175,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Redz Explorer" id="4Fb-1z-Uaj"/>
                     <connections>
-                        <outlet property="categoryCollectionView" destination="UGX-b9-xHG" id="Kzh-WB-hNt"/>
-                        <outlet property="videoList" destination="CLi-OF-kjG" id="aBU-E8-6yF"/>
+                        <outlet property="collectionView" destination="UGX-b9-xHG" id="Kzh-WB-hNt"/>
+                        <outlet property="videoTableView" destination="CLi-OF-kjG" id="aBU-E8-6yF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
