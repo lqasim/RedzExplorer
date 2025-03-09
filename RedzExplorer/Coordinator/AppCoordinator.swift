@@ -31,7 +31,8 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             return .push(videoListVC)
             
         case .videoDetails(let video):
-            let videoDetailsView = VideoDetailSwiftUIView(video: video)
+            let viewModel = VideoDetailViewModel(video: video)
+            let videoDetailsView = VideoDetailSwiftUIView(viewModel: viewModel)
             let hostingController = UIHostingController(rootView: videoDetailsView)
             return .push(hostingController)
         }

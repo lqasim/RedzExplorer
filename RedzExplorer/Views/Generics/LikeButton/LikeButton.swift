@@ -27,7 +27,7 @@ class LikeButton: UIButton {
     
     private func setupButton() {
         setImage(emptyHeartImage, for: .normal)
-        
+        imageView?.contentMode = .scaleAspectFit
         self.tintColor = .red
         self.addTarget(self, action: #selector(toggleLike), for: .touchUpInside)
     }
@@ -39,4 +39,3 @@ class LikeButton: UIButton {
         likeCountChange?(isLiked)
     }
 }
-

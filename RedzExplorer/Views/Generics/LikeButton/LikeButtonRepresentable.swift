@@ -8,40 +8,32 @@
 import SwiftUI
 
 struct LikeButtonRepresentable: UIViewRepresentable {
-  
-    @Binding var isLiked: Bool
+    var viewModel: VideoDetailViewModel
     
     class Coordinator: NSObject {
-        var button: LikeButton
-        @Binding var isLiked: Bool
+        var viewModel: VideoDetailViewModel
         
-        init(button: LikeButton, isLiked: Binding<Bool>) {
-            self.button = button
-            self._isLiked = isLiked
+        init(viewModel: VideoDetailViewModel) {
+            //            self.button = button
+            self.viewModel = viewModel
         }
         
         @objc func toggleLike() {
-            isLiked.toggle()
-            button.toggleLike()
+            viewModel.toggleLike()
         }
     }
     
     func makeUIView(context: Context) -> LikeButton {
         let button = LikeButton()
-        
-        button.likeCountChange = { isLiked in
-            context.coordinator.isLiked = isLiked
-        }
         button.addTarget(context.coordinator, action: #selector(Coordinator.toggleLike), for: .touchUpInside)
         return button
     }
     
-    func updateUIView(_ uiView: LikeButton, context: Context) {}
-    
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(button: LikeButton(), isLiked: $isLiked)
-        
+    func updateUIView(_ uiView: LikeButton, context: Context) {
+        uiView.setImage(viewModel.isLiked ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"), for: .normal)
     }
     
+    func makeCoordinator() -> Coordinator {
+        return Coordinator( viewModel: viewModel)
+    }
 }
