@@ -30,11 +30,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         
         backgroundColor = isSelected ? .systemBlue : .lightGray
     }
-//    override var isSelected: Bool {
-//        didSet {
-//            categoryButton.titleLabel?.textColor = isSelected ? .white : .black
-//
-//            backgroundColor = isSelected ? .systemBlue : .lightGray
-//        }
-//    }
+    
+    static func calculateButtonWidth(title: String) -> CGFloat {
+        return title.size(withAttributes: [.font: UIFont.systemFont(ofSize: 18)]).width + 25
+    }
 }

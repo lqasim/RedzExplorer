@@ -27,11 +27,12 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             guard let videoListVC = storyboard.instantiateViewController(identifier: "VideoListViewController") as? VideoListViewController else {
                 fatalError("Could not instantiate VideoListViewController from storyboard")
             }
-            videoListVC.videoModel = VideoListFactory.create(router: weakRouter)
+            videoListVC.viewModel = VideoListFactory.create(router: weakRouter)
             return .push(videoListVC)
             
         case .videoDetails(let video):
-            let videoDetailsView = VideoDetailSwiftUIView(video: video)
+            let viewModel = VideoDetailViewModel(video: video)
+            let videoDetailsView = VideoDetailSwiftUIView(viewModel: viewModel)
             let hostingController = UIHostingController(rootView: videoDetailsView)
             return .push(hostingController)
         }
